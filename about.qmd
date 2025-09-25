@@ -2,8 +2,7 @@
 title: "About"
 ---
 
-About this site
+Website created for DS 002R PO.01
 
-```{r}
-1 + 1
+```{}
 ```

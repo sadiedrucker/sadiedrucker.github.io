@@ -1,12 +1,29 @@
 ---
-title: "sadiedrucker.github.io"
-format: html
+title: "Sadie Drucker"
+toc: false
+image: profilepicture.png
+about: 
+  template: trestles
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/sadie-drucker-a1887033b/
+    - text: GitHub
+      href: https://github.com/sadiedrucker
+    - text: Email
+      href: mailto:sdrucker1002@scrippscollege.edu
 ---
 
-This is a Quarto website.
+::: {#hero-heading}
+Sadie Drucker is a third-year student at Scripps College.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
 
-```{r}
-1 + 1
-```
+Scripps College \| Claremont, CA\
+B.A in Biology and Data Science \| Aug 2023 - Present
+
+## Experience
+:::
+
+------------------------------------------------------------------------
