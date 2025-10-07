@@ -16,6 +16,8 @@ website:
             href: CDCdatasets.qmd
           - text: Water Insecurity
             href: WaterInsecurity.qmd
+          - text: New York Times Headlines
+            href: NYTHeadlines.qmdquarto preview
 format:
   html:
     theme: cosmo

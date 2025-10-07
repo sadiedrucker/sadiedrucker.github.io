@@ -9,10 +9,9 @@ execute:
   message: false
   warning: false
   echo: true
-
 ---
 
-Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28' target='_blank'>Tidy Tuesday</a> from U.S. Census Bureau data. 
+Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28' target='_blank'>Tidy Tuesday</a> from U.S. Census Bureau data.
 
 ```{r}
 library(tidytuesdayR)
@@ -50,4 +49,3 @@ ggplot(top10_lacking, aes(x=reorder(name, greatest_lacking), y=greatest_lacking)
   theme_minimal()
   
 ```
-
