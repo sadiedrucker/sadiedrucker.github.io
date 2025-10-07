@@ -1,7 +1,19 @@
 ---
 title: "New York Times Headlines"
-format: html
+format: 
+  html:
+    code-fold: true
+    
+execute:
+  message: false
+  warning: false
+  echo: true
 ---
+
+Data source: *New York Times Annotated Corpus*, distributed with the **RTextTools** package
+
+Timothy P. Jurka, Loren Collingwood, Amber E. Boydstun, Emiliano Grossman and Wouter van Atteveldt (2012). RTextTools: Automatic Text Classification via Supervised Learning. R package version 1.3.9. http://CRAN.R-project.org/package=RTextTools. \
+Accessed via built-in dataset `NYTimes` in R.
 
 ```{r}
 library(tidyverse)
@@ -53,7 +65,7 @@ nyt_counts <- nyt_periods |>
 nyt_plot<-nyt_counts|>
   pivot_longer(cols = c(clinton_mentions, bush_mentions),
                names_to = "name", values_to = "count") 
-  
+ 
 
 ggplot(nyt_plot, aes(x = period, y = count, fill = name)) +
   geom_col(position = "dodge") +
@@ -70,14 +82,19 @@ ggplot(nyt_plot, aes(x = period, y = count, fill = name)) +
   ) +
   theme_minimal()
 
-nyt_trend <- nyt_mentions %>%
-  filter(Date >= as.Date("1997-01-20") & Date < as.Date("2005-01-20")) %>%
-  mutate(month = floor_date(Date, "month")) %>%
-  group_by(month) %>%
+```
+
+This bar plot compares the total number of NYT headlines mentioning Clinton and Bush during their presidential terms. It shows that Bush received more media coverage overall than Clinton. This visualization highlights the relative attention each president received from the NYT and allows for a clear comparison between the two eras.
+
+```{r}
+nyt_trend <- nyt_mentions |>
+  filter(Date >= as.Date("1997-01-20") & Date < as.Date("2005-01-20")) |>
+  mutate(month = floor_date(Date, "month")) |>
+  group_by(month) |>
   summarise(
     clinton = sum(clinton),
     bush    = sum(bush)
-  ) %>%
+  ) |>
   pivot_longer(cols = c(clinton, bush),
                names_to = "name",
                values_to = "count")
@@ -103,3 +120,5 @@ ggplot(nyt_trend, aes(x = month, y = count, color = name)) +
 
 
 ```
+
+This line plot shows how mentions of Clinton and Bush changed month by month throughout their presidencies. Spikes in the lines correspond to major events or news stories, such as elections, inaugurations, or controversies. It provides insight into the timing and dynamics of media attention, revealing trends that are not visible in the total counts alone.
