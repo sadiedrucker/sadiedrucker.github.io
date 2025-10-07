@@ -17,7 +17,7 @@ website:
           - text: Water Insecurity
             href: WaterInsecurity.qmd
           - text: New York Times Headlines
-            href: NYTHeadlines.qmdquarto preview
+            href: NYTHeadlines.qmd
 format:
   html:
     theme: cosmo
