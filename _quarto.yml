@@ -10,7 +10,7 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
-      - text: Data Viz
+      - text: Data Visualizations
         menu:
           - text: CDC Datasets
             href: CDCdatasets.qmd
@@ -18,6 +18,8 @@ website:
             href: WaterInsecurity.qmd
           - text: New York Times Headlines
             href: NYTHeadlines.qmd
+          - text: Permutations and Penguin Bill Lengths
+            href: Permutation.qmd
 format:
   html:
     theme: cosmo
