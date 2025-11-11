@@ -10,7 +10,7 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
-      - text: Data Visualizations
+      - text: Data Science Blog
         menu:
           - text: CDC Datasets
             href: CDCdatasets.qmd
@@ -20,6 +20,8 @@ website:
             href: NYTHeadlines.qmd
           - text: Permutations and Penguin Bill Lengths
             href: Permutation.qmd
+          - text: Ethics, Data, and Power
+            href: ethics_data_power.qmd
 format:
   html:
     theme: cosmo

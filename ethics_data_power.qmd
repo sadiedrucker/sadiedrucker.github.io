@@ -1,0 +1,11 @@
+---
+title: "Ethics, Data, and Power"
+format: html
+
+execute:
+  message: false
+  warning: false
+  echo: true
+---
+
+## Sources
