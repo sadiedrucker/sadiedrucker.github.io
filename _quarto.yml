@@ -10,6 +10,18 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
+      - text: Experience
+        menu: 
+          - text: OHSU Baker Lab
+            
+          - text: OHSU Schedin Lab 
+            
+          - text: Scripps College Sheung Lab 
+  
+      - text: Projects
+        menu: 
+          - text: Art && Code
+            href: art.qmd
       - text: Data Science Blog
         menu:
           - text: CDC Datasets
@@ -21,7 +33,7 @@ website:
           - text: Permutations and Penguin Bill Lengths
             href: Permutation.qmd
           - text: Ethics, Data, and Power
-            href: ethics_data_power.qmd
+            href: ethics.qmd
 format:
   html:
     theme: cosmo
