@@ -19,7 +19,9 @@ website:
           - text: Scripps College Sheung Lab 
   
       - text: Projects
-        menu: 
+        menu:
+          - text: Mapping Inequality in Los Angeles, California
+            href: mappingInequality.qmd
           - text: Art && Code
             href: art.qmd
       - text: Data Science Blog

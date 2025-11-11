@@ -9,7 +9,9 @@ execute:
   echo: true
 ---
 
-### Narrative 
+### Narrative
+
+A satire interactive digital narrative about being a student at the Claremont Colleges.
 
 <iframe src="https://editor.p5js.org/sadiedrucker/full/Oyf7_2BHT" width="600" height="400" style="border:none;">
 
@@ -24,3 +26,5 @@ iframe {
 }
 </style>
 ```
+
+### 
