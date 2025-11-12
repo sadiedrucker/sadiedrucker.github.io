@@ -17,11 +17,12 @@ Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tid
 library(tidytuesdayR)
 library(dplyr)
 library(ggplot2)
+Sys.setenv(GITHUB_PAT ="0")
 tuesdata <- tidytuesdayR::tt_load('2025-01-28')
 water_insecurity_2022 <- tuesdata$water_insecurity_2022
 water_insecurity_2023 <- tuesdata$water_insecurity_2023
-water_insecurity_2022 <- water_insecurity_2022 |> 
-  dplyr::mutate(
+water_insecurity_2022 <- water_insecurity_2022 |>  
+ dplyr::mutate(
     geometry = purrr::map(geometry, \(geo) {
       eval(parse(text = geo))
     } )
