@@ -138,7 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-experience">    
         <li class="dropdown-header">OHSU Baker Lab</li>
         <li class="dropdown-header">OHSU Schedin Lab</li>
-        <li class="dropdown-header">Scripps College Sheung Lab</li>
+        <li>
+    <a class="dropdown-item" href="./sheung.html">
+ <span class="dropdown-text">Scripps College Sheung Lab</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -153,6 +156,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./art.html">
  <span class="dropdown-text">Art &amp;&amp; Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./generativeText.html">
+ <span class="dropdown-text">Generative Text</span></a>
   </li>  
     </ul>
   </li>
@@ -231,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">GITHUB_PAT =</span> <span class="st">"TOKEN_REMOVED"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">GITHUB_PAT =</span> <span class="st">""</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-01-28'</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>water_insecurity_2022 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2022</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>water_insecurity_2023 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2023</span>
