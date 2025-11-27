@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "sadiedrucker.github.io"
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: About
+        href: about.qmd
+      - text: Experience
+        menu: 
+          - text: OHSU Baker Lab
+            
+          - text: OHSU Schedin Lab 
+            
+          - text: Scripps College Sheung Lab 
+  
+      - text: Projects
+        menu:
+          - text: Mapping Inequality in Los Angeles, California
+            href: mappingInequality.qmd
+          - text: Art && Code
+            href: art.qmd
+      - text: Data Science Blog
+        menu:
+          - text: CDC Datasets
+          
+          - text: Water Insecurity
+            href: WaterInsecurity.qmd
+          - text: New York Times Headlines
+            href: NYTHeadlines.qmd
+          - text: Permutations and Penguin Bill Lengths
+            href: Permutation.qmd
+          - text: Ethics, Data, and Power
+            href: ethics.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual

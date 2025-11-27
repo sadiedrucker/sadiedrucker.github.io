@@ -1,0 +1,17 @@
+{
+  "hash": "1ef39505a9ab1e5e37469de883f86318",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Water Insecurity\"\ndescription: Water insecurity differ spatially throughout the United States. In this data visualization, we explored which counties have the greatest percent of households lacking plumbing.   \nformat: \n  html:\n    code-fold: true\n    \nexecute:\n  message: false\n  warning: false\n  echo: true\n---\n\n\n\n\nData curated by Niha Pereira for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28' target='_blank'>Tidy Tuesday</a> from U.S. Census Bureau data.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidytuesdayR)\nlibrary(dplyr)\nlibrary(ggplot2)\ntuesdata <- tidytuesdayR::tt_load('2025-01-28')\nwater_insecurity_2022 <- tuesdata$water_insecurity_2022\nwater_insecurity_2023 <- tuesdata$water_insecurity_2023\nwater_insecurity_2022 <- water_insecurity_2022 |> \n  dplyr::mutate(\n    geometry = purrr::map(geometry, \\(geo) {\n      eval(parse(text = geo))\n    } )\n  )\nwater_insecurity_2023 <- water_insecurity_2023 |> \n  dplyr::mutate(\n    geometry = purrr::map(geometry, \\(geo) {\n      eval(parse(text = geo))\n    } )\n  )\n\ntop10_lacking <- water_insecurity_2022 |>\n  mutate(greatest_lacking=percent_lacking_plumbing) |>\n  arrange(desc(greatest_lacking)) |>\n  slice_head(n=10)\n  \nggplot(top10_lacking, aes(x=reorder(name, greatest_lacking), y=greatest_lacking))+\n  geom_col(fill=\"pink\")+\n  coord_flip()+\n  labs(\n    title = \"Top 10 areas lacking plumbing in the U.S. in 2022\",\n    x=\"County Name\", \n    y=\"Percent Lacking Plumbing\"\n  ) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](WaterInsecurity_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "WaterInsecurity_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

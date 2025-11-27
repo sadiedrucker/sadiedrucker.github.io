@@ -1,0 +1,29 @@
+{
+  "about.qmd": {
+    "about.html": "51aef330"
+  },
+  "index.qmd": {
+    "index.html": "1ea0aad3"
+  },
+  "art.qmd": {
+    "art.html": "dfc1bdec"
+  },
+  "ethics_data_power.qmd": {
+    "ethics_data_power.html": "c36d7194"
+  },
+  "Permutation.qmd": {
+    "Permutation.html": "20fe60cc"
+  },
+  "WaterInsecurity.qmd": {
+    "WaterInsecurity.html": "1f436653"
+  },
+  "NYTHeadlines.qmd": {
+    "NYTHeadlines.html": "67d87c84"
+  },
+  "mappingInequality.qmd": {
+    "mappingInequality.html": "fbdd5dbc"
+  },
+  "ethics.qmd": {
+    "ethics.html": "38218d9d"
+  }
+}

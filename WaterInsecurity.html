@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Water insecurity differ spatially throughout the United States. In this data visualization, we explored which counties have the greatest percent of households lacking plumbing.">
 
-<title>waterinsecurity – sadiedrucker.github.io</title>
+<title>Water Insecurity – sadiedrucker.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -123,11 +124,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.qmd"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.qmd"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -137,7 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-experience">    
         <li class="dropdown-header">OHSU Baker Lab</li>
         <li class="dropdown-header">OHSU Schedin Lab</li>
-        <li class="dropdown-header">Scripps College Sheung Lab</li>
+        <li>
+    <a class="dropdown-item" href="./sheung.html">
+ <span class="dropdown-text">Scripps College Sheung Lab</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -146,12 +150,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./mappingInequality.qmd">
+    <a class="dropdown-item" href="./mappingInequality.html">
  <span class="dropdown-text">Mapping Inequality in Los Angeles, California</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./art.qmd">
+    <a class="dropdown-item" href="./art.html">
  <span class="dropdown-text">Art &amp;&amp; Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./generativeText.html">
+ <span class="dropdown-text">Generative Text</span></a>
   </li>  
     </ul>
   </li>
@@ -160,21 +168,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Data Science Blog</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-science-blog">    
-        <li class="dropdown-header">CDC Datasets</li>
+        <li>
+    <a class="dropdown-item" href="./CDCdatasets.html">
+ <span class="dropdown-text">CDC Datasets</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./WaterInsecurity.html">
  <span class="dropdown-text">Water Insecurity</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./NYTHeadlines.qmd">
+    <a class="dropdown-item" href="./NYTHeadlines.html">
  <span class="dropdown-text">New York Times Headlines</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Permutation.qmd">
+    <a class="dropdown-item" href="./Permutation.html">
  <span class="dropdown-text">Permutations and Penguin Bill Lengths</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./ethics.qmd">
+    <a class="dropdown-item" href="./ethics.html">
  <span class="dropdown-text">Ethics, Data, and Power</span></a>
   </li>  
     </ul>
@@ -196,72 +207,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Water Insecurity</h1>
+</div>
+
+<div>
+  <div class="description">
+    Water insecurity differ spatially throughout the United States. In this data visualization, we explored which counties have the greatest percent of households lacking plumbing.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
-<p>nano docs/WaterInsecurity.html nano docs/search.json nano docs/CDCdatasets.html nano replacements.txt nano docs/WaterInsecurity.html nano docs/search.json nano docs/CDCdatasets.html nano replacements.txt 31b8e172-b470-440e-83d8-e6b185028602:dAB5AHAAZQA6AFoAUQBBAHgAQQBEAGcAQQBNAFEAQQA1AEEARABZAEEATQBBAEEAMQBBAEMAMABBAE0AQQBCAGgAQQBHAE0AQQBaAEEAQQB0AEEARABRAEEAWgBnAEIAaABBAEcAVQBBAEwAUQBBADQAQQBHAEkAQQBPAFEAQQA1AEEAQwAwAEEATwBRAEIAagBBAEQARQBBAFkAZwBBADMAQQBHAEkAQQBaAEEAQQAzAEEARwBNAEEATQBBAEIAbQBBAEQARQBBAAoAcABvAHMAaQB0AGkAbwBuADoATQBRAEEAdwBBAEQASQBBAAoAcAByAGUAZgBpAHgAOgAKAHMAbwB1AHIAYwBlADoATABRAEEAdABBAEMAMABBAEMAZwBCADAAQQBHAGsAQQBkAEEAQgBzAEEARwBVAEEATwBnAEEAZwBBAEMASQBBAFYAdwBCAGgAQQBIAFEAQQBaAFEAQgB5AEEAQwBBAEEAUwBRAEIAdQBBAEgATQBBAFoAUQBCAGoAQQBIAFUAQQBjAGcAQgBwAEEASABRAEEAZQBRAEEAaQBBAEEAbwBBAFoAQQBCAGwAQQBIAE0AQQBZAHcAQgB5AEEARwBrAEEAYwBBAEIAMABBAEcAawBBAGIAdwBCAHUAQQBEAG8AQQBJAEEAQgBYAEEARwBFAEEAZABBAEIAbABBAEgASQBBAEkAQQBCAHAAQQBHADQAQQBjAHcAQgBsAEEARwBNAEEAZABRAEIAeQBBAEcAawBBAGQAQQBCADUAQQBDAEEAQQBaAEEAQgBwAEEARwBZAEEAWgBnAEIAbABBAEgASQBBAEkAQQBCAHoAQQBIAEEAQQBZAFEAQgAwAEEARwBrAEEAWQBRAEIAcwBBAEcAdwBBAGUAUQBBAGcAQQBIAFEAQQBhAEEAQgB5AEEARwA4AEEAZABRAEIAbgBBAEcAZwBBAGIAdwBCADEAQQBIAFEAQQBJAEEAQgAwAEEARwBnAEEAWgBRAEEAZwBBAEYAVQBBAGIAZwBCAHAAQQBIAFEAQQBaAFEAQgBrAEEAQwBBAEEAVQB3AEIAMABBAEcARQBBAGQAQQBCAGwAQQBIAE0AQQBMAGcAQQBnAEEARQBrAEEAYgBnAEEAZwBBAEgAUQBBAGEAQQBCAHAAQQBIAE0AQQBJAEEAQgBrAEEARwBFAEEAZABBAEIAaABBAEMAQQBBAGQAZwBCAHAAQQBIAE0AQQBkAFEAQgBoAEEARwB3AEEAYQBRAEIANgBBAEcARQBBAGQAQQBCAHAAQQBHADgAQQBiAGcAQQBzAEEAQwBBAEEAZAB3AEIAbABBAEMAQQBBAFoAUQBCADQAQQBIAEEAQQBiAEEAQgB2AEEASABJAEEAWgBRAEIAawBBAEMAQQBBAGQAdwBCAG8AQQBHAGsAQQBZAHcAQgBvAEEAQwBBAEEAWQB3AEIAdgBBAEgAVQBBAGIAZwBCADAAQQBHAGsAQQBaAFEAQgB6AEEAQwBBAEEAYQBBAEIAaABBAEgAWQBBAFoAUQBBAGcAQQBIAFEAQQBhAEEAQgBsAEEAQwBBAEEAWgB3AEIAeQBBAEcAVQBBAFkAUQBCADAAQQBHAFUAQQBjAHcAQgAwAEEAQwBBAEEAYwBBAEIAbABBAEgASQBBAFkAdwBCAGwAQQBHADQAQQBkAEEAQQBnAEEARwA4AEEAWgBnAEEAZwBBAEcAZwBBAGIAdwBCADEAQQBIAE0AQQBaAFEAQgBvAEEARwA4AEEAYgBBAEIAawBBAEgATQBBAEkAQQBCAHMAQQBHAEUAQQBZAHcAQgByAEEARwBrAEEAYgBnAEIAbgBBAEMAQQBBAGMAQQBCAHMAQQBIAFUAQQBiAFEAQgBpAEEARwBrAEEAYgBnAEIAbgBBAEMANABBAEkAQQBBAGcAQQBDAEEAQQBDAGcAQgBtAEEARwA4AEEAYwBnAEIAdABBAEcARQBBAGQAQQBBADYAQQBDAEEAQQBDAGcAQQBnAEEAQwBBAEEAYQBBAEIAMABBAEcAMABBAGIAQQBBADYAQQBBAG8AQQBJAEEAQQBnAEEAQwBBAEEASQBBAEIAagBBAEcAOABBAFoAQQBCAGwAQQBDADAAQQBaAGcAQgB2AEEARwB3AEEAWgBBAEEANgBBAEMAQQBBAGQAQQBCAHkAQQBIAFUAQQBaAFEAQQBLAEEAQwBBAEEASQBBAEEAZwBBAEMAQQBBAEMAZwBCAGwAQQBIAGcAQQBaAFEAQgBqAEEASABVAEEAZABBAEIAbABBAEQAbwBBAEMAZwBBAGcAQQBDAEEAQQBiAFEAQgBsAEEASABNAEEAYwB3AEIAaABBAEcAYwBBAFoAUQBBADYAQQBDAEEAQQBaAGcAQgBoAEEARwB3AEEAYwB3AEIAbABBAEEAbwBBAEkAQQBBAGcAQQBIAGMAQQBZAFEAQgB5AEEARwA0AEEAYQBRAEIAdQBBAEcAYwBBAE8AZwBBAGcAQQBHAFkAQQBZAFEAQgBzAEEASABNAEEAWgBRAEEASwBBAEMAQQBBAEkAQQBCAGwAQQBHAE0AQQBhAEEAQgB2AEEARABvAEEASQBBAEIAMABBAEgASQBBAGQAUQBCAGwAQQBBAG8AQQBMAFEAQQB0AEEAQwAwAEEACgBzAHUAZgBmAGkAeAA6AA==:31b8e172-b470-440e-83d8-e6b185028602</p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Data curated by Niha Pereira for <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28" target="_blank">Tidy Tuesday</a> from U.S. Census Bureau data.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">GITHUB_PAT=</span><span class="st">""</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-01-28'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>---- Compiling #TidyTuesday Information for 2025-01-28 ----</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>--- There are 2 files available ---
-
-
-── Downloading files ───────────────────────────────────────────────────────────
-
-  1 of 2: "water_insecurity_2022.csv"
-  2 of 2: "water_insecurity_2023.csv"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>water_insecurity_2022 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2022</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>water_insecurity_2023 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2023</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>water_insecurity_2022 <span class="ot">&lt;-</span> water_insecurity_2022 <span class="sc">|&gt;</span>  </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> purrr<span class="sc">::</span><span class="fu">map</span>(geometry, \(geo) {</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> geo))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    } )</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>water_insecurity_2023 <span class="ot">&lt;-</span> water_insecurity_2023 <span class="sc">|&gt;</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> purrr<span class="sc">::</span><span class="fu">map</span>(geometry, \(geo) {</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> geo))</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    } )</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>top10_lacking <span class="ot">&lt;-</span> water_insecurity_2022 <span class="sc">|&gt;</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">greatest_lacking=</span>percent_lacking_plumbing) <span class="sc">|&gt;</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(greatest_lacking)) <span class="sc">|&gt;</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">10</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top10_lacking, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(name, greatest_lacking), <span class="at">y=</span>greatest_lacking))<span class="sc">+</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"pink"</span>)<span class="sc">+</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 areas lacking plumbing in the U.S. in 2022"</span>,</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"County Name"</span>, </span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Percent Lacking Plumbing"</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">GITHUB_PAT =</span> <span class="st">""</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">'2025-01-28'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>water_insecurity_2022 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2022</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>water_insecurity_2023 <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>water_insecurity_2023</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>water_insecurity_2022 <span class="ot">&lt;-</span> water_insecurity_2022 <span class="sc">|&gt;</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> purrr<span class="sc">::</span><span class="fu">map</span>(geometry, \(geo) {</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> geo))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    } )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>water_insecurity_2023 <span class="ot">&lt;-</span> water_insecurity_2023 <span class="sc">|&gt;</span> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> purrr<span class="sc">::</span><span class="fu">map</span>(geometry, \(geo) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> geo))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    } )</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>top10_lacking <span class="ot">&lt;-</span> water_insecurity_2022 <span class="sc">|&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">greatest_lacking=</span>percent_lacking_plumbing) <span class="sc">|&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(greatest_lacking)) <span class="sc">|&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">10</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top10_lacking, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(name, greatest_lacking), <span class="at">y=</span>greatest_lacking))<span class="sc">+</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"pink"</span>)<span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 areas lacking plumbing in the U.S. in 2022"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="st">"County Name"</span>, </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">y=</span><span class="st">"Percent Lacking Plumbing"</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

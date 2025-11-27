@@ -1,0 +1,43 @@
+---
+title: "Ethics, Data, and Power"
+format: html
+
+execute:
+  message: false
+  warning: false
+  echo: true
+---
+
+### OkCupid Data Breach: An Ethical Dilemma
+
+#### Background:
+
+In 2016, a group of Danish researchers collected data from the popular dating website OkCupid, which uses algorithms to match people based on their answers to personal questions (Resnick, 2016). The researchers scraped data from over 70,000 users’ profiles, collecting information such as usernames, age, gender, sexual orientation, political views, and responses to intimate survey questions (Resnick, 2016). They later published this data set online for use by other social scientists and data scientists. The data science component of this example was the creation of a large, open dataset to analyze human relationships through computational methods. The ethical dilemma emerged because this dataset contained identifiable and sensitive personal information collected without user consent or anonymization, exposing thousands of people to privacy violations (Xiao & Ma, 2021).
+
+### Where did the Danish researchers go wrong?
+
+#### Consent and Participant Awareness
+
+The most significant ethical issue in this case concerns consent. None of the OkCupid users were informed that their data would be collected, analyzed, or shared publicly. Even though their profiles were technically visible online, users had created them for personal dating purposes, not to become research subjects. Informed consent requires that participants understand how their information will be used and have the opportunity to opt out. Here, informed consent was not possible because users were not contacted at all, and the researchers used data for purposes far beyond what users could have reasonably anticipated. This failure to seek consent violates both research ethics and user trust, as people were unknowingly exposed to potential harm through the release of their private information.
+
+#### Permission and Data Use Policies
+
+In addition to lacking user consent, the researchers also did not obtain permission from OkCupid itself. The platform’s terms of service explicitly prohibit scraping or collecting user data without authorization. By ignoring these rules, the researchers bypassed the established permission structure for data use. In responsible research, permission structures help balance open scientific inquiry with the rights of data owners and subjects. In this case, the researchers justified their actions by saying that the data were “public,” but that reasoning overlooks the context of publication: users shared their profiles for dating, not for scientific analysis.
+
+#### Anonymity and Identifiability
+
+Another major problem was that the released dataset was not anonymized. The researchers included usernames, locations, and detailed responses that could easily lead to re-identification. Since the data included highly sensitive information such as sexual orientation and political affiliation, a lack of anonymization posed real risks of exposure, discrimination, or harassment. Ethical data science requires either anonymizing data or adding “noise” (small distortions) to protect identities, but the researchers took no such precautions. Their failure to protect anonymity made the dataset deeply unethical to share.
+
+#### Data Sharing and Accessibility
+
+The researchers’ decision to make the dataset publicly available amplified the harm. They uploaded it to the Open Science Framework, where anyone could download it. Their intention may have been to promote transparency and open research, which are generally good data science values. However, in this case, openness came at the cost of privacy and safety. Sharing sensitive, identifiable data publicly transformed private individuals into involuntary research subjects. Instead of promoting scientific integrity, the decision undermined it by disregarding fundamental principles of respect and confidentiality.
+
+### Why does this matter?
+
+This case matters because it exposes the tension between the ideals of open data and the rights of individuals to control their personal information as well as the issue of privacy on the internet. The people who benefited from this dataset were primarily researchers seeking to create this dataset. Those who were harmed were the OkCupid users, whose sensitive identities were exposed without their knowledge or consent. While there was no profit motive here, the ethical violations stemmed from a form of data power: the assumption that because data are accessible, they are available for use. This mindset reflects a broader problem in data science, prioritizing curiosity and discovery over responsibility and human dignity. The OkCupid case reminds us that just because data can be collected and analyzed does not mean it should be.
+
+### Sources
+
+Resnick, B. (2016, May 12). *Researchers just released profile data on 70,000 OkCupid users without permission*. Vox. https://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release
+
+Xiao, T., & Ma, Y. (2021). A Letter to the *Journal of Statistics and Data Science Education* — A Call for Review of “OkCupid Data for Introductory Statistics and Data Science Courses” by Albert Y. Kim and Adriana Escobedo-Land. *Journal of Statistics and Data Science Education*, 29(2), 214–215. https://doi.org/10.1080/26939169.2021.1930812
