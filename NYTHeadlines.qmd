@@ -1,0 +1,105 @@
+---
+title: "New York Times Headlines"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(lubridate)
+library(RTextTools) 
+library(forcats)
+data(NYTimes)
+nyt<-as_tibble(NYTimes)
+
+nyt<-nyt |>
+  mutate(Date=as.Date(Date, format = "%d-%b-%y"))
+
+nyt_clean <- nyt |>
+  mutate(clean_headline=Title |>
+           str_to_lower()|>
+           str_replace_all("[^a-z\\s]", " ")|>
+           str_squish(),
+         year=year(Date)
+        )
+
+nyt_mentions <- nyt_clean |>
+  mutate(
+    clinton = str_detect(clean_headline, "(?<![a-z])clinton(?![a-z])"),
+    bush = str_detect(clean_headline, "(?<![a-z])bush(?![a-z])")
+  )
+
+nyt_periods <- nyt_mentions |>
+  mutate(
+    period = case_when(
+      Date >= as.Date("1997-01-20") & Date < as.Date("2001-01-20") ~ "Clinton Era 
+      (01/20/1997 to 01/20/2001)",
+      Date >= as.Date("2001-01-20") & Date < as.Date("2005-01-20") ~ "Bush era 
+      (01/20/2001 to 01/20/2005)",
+      TRUE ~ NA_character_
+    )
+  ) |>
+  filter(!is.na(period))
+
+nyt_counts <- nyt_periods |>
+  group_by(period) |>
+  summarise(
+    clinton_mentions = sum(clinton),
+    bush_mentions = sum(bush)
+  )
+
+  
+
+nyt_plot<-nyt_counts|>
+  pivot_longer(cols = c(clinton_mentions, bush_mentions),
+               names_to = "name", values_to = "count") 
+  
+
+ggplot(nyt_plot, aes(x = period, y = count, fill = name)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "NYT Headline Mentions: Clinton vs Bush",
+    x = "Presidential Era", 
+    y = "Number of Mentions",
+    fill = "President"
+  ) +
+  scale_fill_manual(
+    values = c("clinton_mentions" = "blue", "bush_mentions" = "red"),
+    labels = c("clinton_mentions" = "Clinton mentions",
+               "bush_mentions" = "Bush mentions")
+  ) +
+  theme_minimal()
+
+nyt_trend <- nyt_mentions %>%
+  filter(Date >= as.Date("1997-01-20") & Date < as.Date("2005-01-20")) %>%
+  mutate(month = floor_date(Date, "month")) %>%
+  group_by(month) %>%
+  summarise(
+    clinton = sum(clinton),
+    bush    = sum(bush)
+  ) %>%
+  pivot_longer(cols = c(clinton, bush),
+               names_to = "name",
+               values_to = "count")
+
+ggplot(nyt_trend, aes(x = month, y = count, color = name)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "6 months") + 
+  scale_color_manual(
+    values = c("clinton" = "blue", "bush" = "red"),
+    labels = c("clinton" = "Clinton mentions",
+               "bush" = "Bush mentions")) +
+  
+  labs(
+    title = "Monthly NYT Headline Mentions: Clinton vs Bush",
+    x = "Month",
+    y = "Number of Mentions",
+    color = "President"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size=8)) 
+  
+
+
+```
