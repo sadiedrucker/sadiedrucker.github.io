@@ -9,6 +9,7 @@ execute:
   warning: false
   echo: true
 ---
+
 ```{r}
 reticulate::use_miniconda("r-reticulate", required = TRUE)
 reticulate::py_config()
@@ -1032,5 +1033,6 @@ fig.write_html("network_graph.html", include_plotlyjs='cdn')
 
 ```
 
-<iframe src="network_graph.html" width="1000" height="800"></iframe>
+<iframe src="network_graph.html" width="1000" height="800">
 
+</iframe>

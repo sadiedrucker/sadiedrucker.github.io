@@ -27,7 +27,7 @@ website:
       - text: Data Science Blog
         menu:
           - text: CDC Datasets
-          
+            href: CDCdatasets.qmd
           - text: Water Insecurity
             href: WaterInsecurity.qmd
           - text: New York Times Headlines
