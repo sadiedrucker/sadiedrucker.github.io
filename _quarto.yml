@@ -8,8 +8,6 @@ website:
     left:
       - text: Home
         href: index.qmd
-      - text: About
-        href: about.qmd
       - text: Experience
         menu: 
           - text: OHSU Baker Lab

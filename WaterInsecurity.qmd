@@ -17,7 +17,7 @@ Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tid
 library(tidytuesdayR)
 library(dplyr)
 library(ggplot2)
-Sys.setenv(GITHUB_PAT ="0")
+Sys.setenv(GITHUB_PAT ="")
 tuesdata <- tidytuesdayR::tt_load('2025-01-28')
 water_insecurity_2022 <- tuesdata$water_insecurity_2022
 water_insecurity_2023 <- tuesdata$water_insecurity_2023

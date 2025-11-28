@@ -1,5 +1,28 @@
 ---
-title: "index"
-format: html
+title: "Sadie Drucker"
+image: sadiedrucker.github.io/Drucker0488.jpg
+toc: false
+
+about: 
+  template: trestles
+  image-shape: round
+  image-width: 17em
+  links:
+    - icon: LinkedIn
+      href: www.linkedin.com/in/sadie-drucker-a1887033b
+    - icon: GitHub
+      href: https://github.com/sadiedrucker
+    - icon: Email
+      href: mailto:sdrucker1002@scrippscollege.edu
 ---
 
+# Hi, I'm Sadie Drucker
+
+I’m a third-year student at Scripps College studying Biology and Data Science.
+
+My interests include: - Cancer biology - Computational analysis and data science - Public health and biomedical research
+
+## Education
+
+**Scripps College** — Claremont, CA\
+B.A. in Biology and Data Science \| Aug 2023 – Present
