@@ -9,6 +9,7 @@ execute:
   message: false
   warning: false
   echo: true
+  cache: true
 ---
 
 Data curated by Jon Harmon for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11' target='_blank'>Tidy Tuesday</a> from <a href='https://archive.org/download/20250128-cdc-datasets' target='_blank'>CDC datasets</a> on Internet Archive.
