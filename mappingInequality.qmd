@@ -1,5 +1,5 @@
 ---
-title: "mappingInequality"
+title: "Mapping Inequality in Los Angeles, California"
 format: 
   html:
     code-fold: true
@@ -14,7 +14,46 @@ execute:
 reticulate::use_miniconda("r-reticulate", required = TRUE)
 reticulate::py_config()
 reticulate::py_install(c("plotly", "networkx"), envname = "r-reticulate")
+
 ```
+
+### Guiding Research Questions 
+
+1.  Are neighborhoods segregated by race and/or socioeconomic status?
+2.  Is poverty spatially concentrated?
+3.  How does public transportation connect different neighborhoods?
+
+### Mathematical Tools 
+
+I employed methods such as Graph Theory and Counting to develop a model that could address these research questions.
+
+#### Graph Theory 
+
+I aimed to create a graph of neighborhoods in Los Angeles where nodes represented neighborhoods and edges were established between nodes if public transportation between them takes less than thirty minutes. I then overlaid poverty and race data on the graph.
+
+#### Counting 
+
+There are 114 officially recognized neighborhoods in Los Angeles.\
+
+If I wanted to keep track of the public transportation travel time between every pair of neighborhoods, I would need to look up the travel time for every possible origin–destination combination.
+
+We consider the set of $V$ of $n$, where $n=114$ neighborhoods
+
+We want to count the number of ordered pairs $(u,v)$ such that:
+
+-   $u \in V$ (origin)
+
+-    $v \in V$ (destination)\\
+
+-   $u \ne v$ (no self loops)
+
+The total number of such pairs is:$=P(114, 2)=\frac{114!}{(114-2)!}=\frac{114!}{112!}=n(n-1)=114*113=12882$
+
+This means there are **12,882** unique direction queries to collect.
+
+Looking up this many connections manually would be impossible in practice.\
+
+Once I recognized the scale of the problem, I designed an automated system using the **Google Directions API** to generate the full set of travel-time connections programmatically.
 
 ```{python}
 # !pip install googlemaps
@@ -1036,3 +1075,21 @@ fig.write_html("network_graph.html", include_plotlyjs='cdn')
 <iframe src="network_graph.html" width="1000" height="800">
 
 </iframe>
+
+### Conclusions 
+
+1.  Strong correlation between the percent of non-white residents and poverty.
+
+2.  Poorest neighborhoods are the most connected (nodes with the highest degrees).
+
+3.  Impoverished neighborhoods are primarily connected to other impoverished neighborhoods (and similarly, wealthy neighborhoods are connected to other wealthy neighborhoods).
+
+### Limitations
+
+Firstly, transportation data does not represent an average across all days and times of day. The data was collected at 11 AM on a Saturday because that is when the code was run. Similarly, the directions were taken from an arbitrarily determined “center” of each neighborhood by Google Directions.
+
+There is also an inconsistency between the counting methods and the actual graph. When counting (Figure 1), each ordered pair was considered separately, i.e., $(v, u) \neq (u, v)$, but this distinction is not represented in the graph (Figure 3), where edges are treated as undirected.
+
+Finally, in simplifying the data for the final visualization, I chose to group all non-white racial categories into a single category to highlight neighborhood diversity. In doing this, I acknowledge that I combined distinct cultures, identities, and heritages into a single label of “diversity.” This risks oversimplifying and diminishing the uniqueness of the communities represented. In the future, I could represent racial demographics with more nuance and specificity.
+
+Link to full paper: <https://docs.google.com/document/d/19MSl1NSdOlKH9gxs8ZxGOMK7ZuP_ok4J4CZHW5JECRw/edit?usp=sharing>

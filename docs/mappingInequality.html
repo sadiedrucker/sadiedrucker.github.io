@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mappingInequality – sadiedrucker.github.io</title>
+<title>Mapping Inequality in Los Angeles, California – sadiedrucker.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -155,15 +184,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#guiding-research-questions" id="toc-guiding-research-questions" class="nav-link active" data-scroll-target="#guiding-research-questions">Guiding Research Questions</a></li>
+  <li><a href="#mathematical-tools" id="toc-mathematical-tools" class="nav-link" data-scroll-target="#mathematical-tools">Mathematical Tools</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">mappingInequality</h1>
+<h1 class="title">Mapping Inequality in Los Angeles, California</h1>
 </div>
 
 
@@ -192,6 +230,38 @@ numpy_version:  2.2.6
 NOTE: Python version was forced by use_python() function</code></pre>
 </div>
 </div>
+<section id="guiding-research-questions" class="level3">
+<h3 class="anchored" data-anchor-id="guiding-research-questions">Guiding Research Questions</h3>
+<ol type="1">
+<li>Are neighborhoods segregated by race and/or socioeconomic status?</li>
+<li>Is poverty spatially concentrated?</li>
+<li>How does public transportation connect different neighborhoods?</li>
+</ol>
+</section>
+<section id="mathematical-tools" class="level3">
+<h3 class="anchored" data-anchor-id="mathematical-tools">Mathematical Tools</h3>
+<p>I employed methods such as Graph Theory and Counting to develop a model that could address these research questions.</p>
+<section id="graph-theory" class="level4">
+<h4 class="anchored" data-anchor-id="graph-theory">Graph Theory</h4>
+<p>I aimed to create a graph of neighborhoods in Los Angeles where nodes represented neighborhoods and edges were established between nodes if public transportation between them takes less than thirty minutes. I then overlaid poverty and race data on the graph.</p>
+</section>
+<section id="counting" class="level4">
+<h4 class="anchored" data-anchor-id="counting">Counting</h4>
+<p>There are 114 officially recognized neighborhoods in Los Angeles.<br>
+</p>
+<p>If I wanted to keep track of the public transportation travel time between every pair of neighborhoods, I would need to look up the travel time for every possible origin–destination combination.</p>
+<p>We consider the set of <span class="math inline">\(V\)</span> of <span class="math inline">\(n\)</span>, where <span class="math inline">\(n=114\)</span> neighborhoods</p>
+<p>We want to count the number of ordered pairs <span class="math inline">\((u,v)\)</span> such that:</p>
+<ul>
+<li><p><span class="math inline">\(u \in V\)</span> (origin)</p></li>
+<li><p><span class="math inline">\(v \in V\)</span> (destination)\</p></li>
+<li><p><span class="math inline">\(u \ne v\)</span> (no self loops)</p></li>
+</ul>
+<p>The total number of such pairs is:<span class="math inline">\(=P(114, 2)=\frac{114!}{(114-2)!}=\frac{114!}{112!}=n(n-1)=114*113=12882\)</span></p>
+<p>This means there are <strong>12,882</strong> unique direction queries to collect.</p>
+<p>Looking up this many connections manually would be impossible in practice.<br>
+</p>
+<p>Once I recognized the scale of the problem, I designed an automated system using the <strong>Google Directions API</strong> to generate the full set of travel-time connections programmatically.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Figure({
@@ -472,8 +542,25 @@ NOTE: Python version was forced by use_python() function</code></pre>
 </div>
 <iframe src="network_graph.html" width="1000" height="800">
 </iframe>
+</section>
+</section>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
+<ol type="1">
+<li><p>Strong correlation between the percent of non-white residents and poverty.</p></li>
+<li><p>Poorest neighborhoods are the most connected (nodes with the highest degrees).</p></li>
+<li><p>Impoverished neighborhoods are primarily connected to other impoverished neighborhoods (and similarly, wealthy neighborhoods are connected to other wealthy neighborhoods).</p></li>
+</ol>
+</section>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
+<p>Firstly, transportation data does not represent an average across all days and times of day. The data was collected at 11 AM on a Saturday because that is when the code was run. Similarly, the directions were taken from an arbitrarily determined “center” of each neighborhood by Google Directions.</p>
+<p>There is also an inconsistency between the counting methods and the actual graph. When counting (Figure 1), each ordered pair was considered separately, i.e., <span class="math inline">\((v, u) \neq (u, v)\)</span>, but this distinction is not represented in the graph (Figure 3), where edges are treated as undirected.</p>
+<p>Finally, in simplifying the data for the final visualization, I chose to group all non-white racial categories into a single category to highlight neighborhood diversity. In doing this, I acknowledge that I combined distinct cultures, identities, and heritages into a single label of “diversity.” This risks oversimplifying and diminishing the uniqueness of the communities represented. In the future, I could represent racial demographics with more nuance and specificity.</p>
+<p>Link to full paper: <a href="https://docs.google.com/document/d/19MSl1NSdOlKH9gxs8ZxGOMK7ZuP_ok4J4CZHW5JECRw/edit?usp=sharing" class="uri">https://docs.google.com/document/d/19MSl1NSdOlKH9gxs8ZxGOMK7ZuP_ok4J4CZHW5JECRw/edit?usp=sharing</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
