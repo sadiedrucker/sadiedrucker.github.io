@@ -20,21 +20,21 @@ reticulate::py_install(c("plotly", "networkx"), envname = "r-reticulate")
 
 ```
 
-### Guiding Research Questions 
+### Guiding Research Questions
 
 1.  Are neighborhoods segregated by race and/or socioeconomic status?
 2.  Is poverty spatially concentrated?
 3.  How does public transportation connect different neighborhoods?
 
-### Mathematical Tools 
+### Mathematical Tools
 
 I employed methods such as Graph Theory and Counting to develop a model that could address these research questions.
 
-#### Graph Theory 
+#### Graph Theory
 
 I aimed to create a graph of neighborhoods in Los Angeles where nodes represented neighborhoods and edges were established between nodes if public transportation between them takes less than thirty minutes. I then overlaid poverty and race data on the graph.
 
-#### Counting 
+#### Counting
 
 There are 114 officially recognized neighborhoods in Los Angeles.\
 
@@ -46,7 +46,7 @@ We want to count the number of ordered pairs $(u,v)$ such that:
 
 -   $u \in V$ (origin)
 
--    $v \in V$ (destination)\\
+-   $v \in V$ (destination)\\
 
 -   $u \ne v$ (no self loops)
 
@@ -1087,7 +1087,7 @@ fig.write_html("network_graph.html", include_plotlyjs='cdn')
 
 </iframe>
 
-### Conclusions 
+### Conclusions
 
 1.  Strong correlation between the percent of non-white residents and poverty.
 
