@@ -14,6 +14,7 @@ execute:
 #| results: 'hide'
 #| message: false
 #| warning: false
+#| cache: TRUE
 reticulate::use_miniconda("r-reticulate", required = TRUE)
 reticulate::py_config()
 reticulate::py_install(c("plotly", "networkx"), envname = "r-reticulate")
@@ -223,6 +224,7 @@ Once I recognized the scale of the problem, I designed an automated system using
 #| code-fold: true
 #| code-summary: "Show code"
 #| output: false
+#| cache: true
 
 
 import plotly.graph_objects as go

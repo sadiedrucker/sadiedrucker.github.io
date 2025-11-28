@@ -13,7 +13,7 @@ execute:
 
 Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28' target='_blank'>Tidy Tuesday</a> from U.S. Census Bureau data.
 
-```{r}
+```{r, cache=TRUE}
 library(tidytuesdayR)
 library(dplyr)
 library(ggplot2)

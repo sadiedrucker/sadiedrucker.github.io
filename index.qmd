@@ -1,6 +1,6 @@
 ---
 title: "Sadie Drucker"
-image: sadiedrucker.github.io/Drucker0488.jpg
+image: media/Drucker0488.jpg
 toc: false
 
 about: 
@@ -8,11 +8,11 @@ about:
   image-shape: round
   image-width: 17em
   links:
-    - icon: LinkedIn
-      href: www.linkedin.com/in/sadie-drucker-a1887033b
-    - icon: GitHub
+    - icon: linkedin
+      href: https://www.linkedin.com/in/sadie-drucker-a1887033b
+    - icon: github
       href: https://github.com/sadiedrucker
-    - icon: Email
+    - icon: envelope
       href: mailto:sdrucker1002@scrippscollege.edu
 ---
 

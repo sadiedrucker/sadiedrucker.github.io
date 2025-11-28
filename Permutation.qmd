@@ -10,11 +10,11 @@ execute:
   echo: true
 ---
 
-## Background 
+## Background
 
 This simulation study investigates whether there is a statistically significant difference in bill length between male and female penguins, testing the alternative hypothesis that bill length varies by sex. he analysis uses data from the *palmerpenguins* dataset in R, which contains morphological measurements for three penguin species from the Palmer Archipelago in Antarctica. Understanding differences in bill length across sexes can provide insights into sexual dimorphism and ecological adaptations in penguin species. A permutation test was conducted to simulate the distribution of mean differences under the null hypothesis that bill length is independent of sex, allowing for an assessment of whether the observed difference is more likely due to random chance.
 
-## Visualization of variables of interest 
+## Visualization of variables of interest
 
 ```{r}
 library(tidyverse)
@@ -39,9 +39,9 @@ ggplot(clean_penguins, aes(x=sex, y=bill_length_mm, fill=sex))+
 
 In the original data presented in the above graph, male penguins have a greater median bill length. To reject the null hypothesis, we performed a permutation test to determine whether this observed difference between sexes is likely to have occurred by chance.
 
-## Permutation Test 
+## Permutation Test
 
-### Step 1: Define the null hypothesis 
+### Step 1: Define the null hypothesis
 
 In this case, the null hypothesis is that bill length is independent of sex in penguins.
 
@@ -57,7 +57,7 @@ The mapping function quickly tests if the function is working as expected.
 
 ## 
 
-```{r}
+```{r, cache=TRUE}
 #Permutation test 
 
 set.seed(47) 
@@ -82,13 +82,13 @@ map(c(1:10), perm_data, data = clean_penguins) |>
   list_rbind()
 ```
 
-### Step 4: Visualize null sampling distributions 
+### Step 4: Visualize null sampling distributions
 
 The mapping function used here runs the function *`perm_data()`* one thousand times to simulate the permutation distribution.
 
 Each row in *`perm_stats`* represents one shuffled permutation: the permuted mean and median differences and the observed statistics.
 
-```{r}
+```{r, cache=TRUE}
 set.seed(47)
 perm_stats <- 
   map(c(1:1000), perm_data, data = clean_penguins) |> 
@@ -114,7 +114,7 @@ perm_stats |>
   )
 ```
 
-### Step 5: Compute the p-value 
+### Step 5: Compute the p-value
 
 This value indicates the probability of observing the data or more extreme outcomes if the null hypothesis is true. In other words, the probability that the pattern in the original observed data is due to random chance.
 
