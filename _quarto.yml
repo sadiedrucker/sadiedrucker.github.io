@@ -11,7 +11,7 @@ website:
       - text: Experience
         menu: 
           - text: OHSU Baker Lab
-            
+            href: bakerLab.qmd
           - text: OHSU Schedin Lab 
             
           - text: Scripps College Sheung Lab 

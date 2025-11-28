@@ -16,14 +16,20 @@ about:
       href: mailto:sdrucker1002@scrippscollege.edu
 ---
 
-## About Me
-
-I’m a third-year student at Scripps College studying Biology and Data Science.
-
-My interests include: - Cancer biology - Computational analysis and data science - Public health and biomedical research
-
 ## Education
 
 **Scripps College** — Claremont, CA\
 B.A. in Biology and Data Science \| Aug 2023 – Present\
 Dean's List Fall 2023-Spring 2025
+
+## About Me
+
+I’m a third-year student at Scripps College studying Biology and Data Science.
+
+My interests include:
+
+-   Medicine
+
+-   Computational analysis and data science
+
+-   Public health and biomedical research
