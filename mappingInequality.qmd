@@ -7,10 +7,13 @@ format:
 execute:
   message: false
   warning: false
-  echo: false
 ---
 
 ```{r}
+#| echo: false
+#| results: 'hide'
+#| message: false
+#| warning: false
 reticulate::use_miniconda("r-reticulate", required = TRUE)
 reticulate::py_config()
 reticulate::py_install(c("plotly", "networkx"), envname = "r-reticulate")
@@ -53,9 +56,12 @@ This means there are **12,882** unique direction queries to collect.
 
 Looking up this many connections manually would be impossible in practice.\
 
-Once I recognized the scale of the problem, I designed an automated system using the **Google Directions API** to generate the full set of travel-time connections programmatically.
+Once I recognized the scale of the problem, I designed an automated system using the Google Directions API to generate the full set of travel-time connections programmatically.
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show code"
+#| output: false
 # !pip install googlemaps
 # !pip install networkx
 # import networkx as nx
@@ -214,6 +220,11 @@ Once I recognized the scale of the problem, I designed an automated system using
 ```
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show code"
+#| output: false
+
+
 import plotly.graph_objects as go
 import networkx as nx
 import numpy as np
