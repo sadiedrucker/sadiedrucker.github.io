@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>New York Times Headlines – sadiedrucker.github.io</title>
+<title>Ethics, Data, and Power – sadiedrucker.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -189,15 +155,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#okcupid-data-breach-an-ethical-dilemma" id="toc-okcupid-data-breach-an-ethical-dilemma" class="nav-link active" data-scroll-target="#okcupid-data-breach-an-ethical-dilemma">OkCupid Data Breach: An Ethical Dilemma</a></li>
+  <li><a href="#where-did-the-danish-researchers-go-wrong" id="toc-where-did-the-danish-researchers-go-wrong" class="nav-link" data-scroll-target="#where-did-the-danish-researchers-go-wrong">Where did the Danish researchers go wrong?</a></li>
+  <li><a href="#why-does-this-matter" id="toc-why-does-this-matter" class="nav-link" data-scroll-target="#why-does-this-matter">Why does this matter?</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">New York Times Headlines</h1>
+<h1 class="title">Ethics, Data, and Power</h1>
 </div>
 
 
@@ -214,137 +189,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
-✔ forcats   1.0.0     ✔ stringr   1.6.0
-✔ ggplot2   4.0.1     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.2.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RTextTools) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: SparseM</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(NYTimes)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nyt<span class="ot">&lt;-</span><span class="fu">as_tibble</span>(NYTimes)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nyt<span class="ot">&lt;-</span>nyt <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date=</span><span class="fu">as.Date</span>(Date, <span class="at">format =</span> <span class="st">"%d-%b-%y"</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>nyt_clean <span class="ot">&lt;-</span> nyt <span class="sc">|&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clean_headline=</span>Title <span class="sc">|&gt;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_to_lower</span>()<span class="sc">|&gt;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace_all</span>(<span class="st">"[^a-z</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">" "</span>)<span class="sc">|&gt;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_squish</span>(),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">year=</span><span class="fu">year</span>(Date)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>nyt_mentions <span class="ot">&lt;-</span> nyt_clean <span class="sc">|&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton =</span> <span class="fu">str_detect</span>(clean_headline, <span class="st">"(?&lt;![a-z])clinton(?![a-z])"</span>),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush =</span> <span class="fu">str_detect</span>(clean_headline, <span class="st">"(?&lt;![a-z])bush(?![a-z])"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>nyt_periods <span class="ot">&lt;-</span> nyt_mentions <span class="sc">|&gt;</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">period =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"1997-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2001-01-20"</span>) <span class="sc">~</span> <span class="st">"Clinton Era </span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="st">      (01/20/1997 to 01/20/2001)"</span>,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"2001-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2005-01-20"</span>) <span class="sc">~</span> <span class="st">"Bush era </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">      (01/20/2001 to 01/20/2005)"</span>,</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(period))</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>nyt_counts <span class="ot">&lt;-</span> nyt_periods <span class="sc">|&gt;</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period) <span class="sc">|&gt;</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton_mentions =</span> <span class="fu">sum</span>(clinton),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush_mentions =</span> <span class="fu">sum</span>(bush)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>nyt_plot<span class="ot">&lt;-</span>nyt_counts<span class="sc">|&gt;</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(clinton_mentions, bush_mentions),</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"name"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>) </span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nyt_plot, <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> count, <span class="at">fill =</span> name)) <span class="sc">+</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"NYT Headline Mentions: Clinton vs Bush"</span>,</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Presidential Era"</span>, </span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Mentions"</span>,</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"President"</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"clinton_mentions"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"bush_mentions"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"clinton_mentions"</span> <span class="ot">=</span> <span class="st">"Clinton mentions"</span>,</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>               <span class="st">"bush_mentions"</span> <span class="ot">=</span> <span class="st">"Bush mentions"</span>)</span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NYTHeadlines_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nyt_trend <span class="ot">&lt;-</span> nyt_mentions <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"1997-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2005-01-20"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">floor_date</span>(Date, <span class="st">"month"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton =</span> <span class="fu">sum</span>(clinton),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush    =</span> <span class="fu">sum</span>(bush)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(clinton, bush),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nyt_trend, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> count, <span class="at">color =</span> name)) <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="at">date_breaks =</span> <span class="st">"6 months"</span>) <span class="sc">+</span> </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"clinton"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"bush"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"clinton"</span> <span class="ot">=</span> <span class="st">"Clinton mentions"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>               <span class="st">"bush"</span> <span class="ot">=</span> <span class="st">"Bush mentions"</span>)) <span class="sc">+</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Monthly NYT Headline Mentions: Clinton vs Bush"</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Month"</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Mentions"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"President"</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">8</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NYTHeadlines_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="okcupid-data-breach-an-ethical-dilemma" class="level3">
+<h3 class="anchored" data-anchor-id="okcupid-data-breach-an-ethical-dilemma">OkCupid Data Breach: An Ethical Dilemma</h3>
+<section id="background" class="level4">
+<h4 class="anchored" data-anchor-id="background">Background:</h4>
+<p>In 2016, a group of Danish researchers collected data from the popular dating website OkCupid, which uses algorithms to match people based on their answers to personal questions (Resnick, 2016). The researchers scraped data from over 70,000 users’ profiles, collecting information such as usernames, age, gender, sexual orientation, political views, and responses to intimate survey questions (Resnick, 2016). They later published this data set online for use by other social scientists and data scientists. The data science component of this example was the creation of a large, open dataset to analyze human relationships through computational methods. The ethical dilemma emerged because this dataset contained identifiable and sensitive personal information collected without user consent or anonymization, exposing thousands of people to privacy violations (Xiao &amp; Ma, 2021).</p>
+</section>
+</section>
+<section id="where-did-the-danish-researchers-go-wrong" class="level3">
+<h3 class="anchored" data-anchor-id="where-did-the-danish-researchers-go-wrong">Where did the Danish researchers go wrong?</h3>
+<section id="consent-and-participant-awareness" class="level4">
+<h4 class="anchored" data-anchor-id="consent-and-participant-awareness">Consent and Participant Awareness</h4>
+<p>The most significant ethical issue in this case concerns consent. None of the OkCupid users were informed that their data would be collected, analyzed, or shared publicly. Even though their profiles were technically visible online, users had created them for personal dating purposes, not to become research subjects. Informed consent requires that participants understand how their information will be used and have the opportunity to opt out. Here, informed consent was not possible because users were not contacted at all, and the researchers used data for purposes far beyond what users could have reasonably anticipated. This failure to seek consent violates both research ethics and user trust, as people were unknowingly exposed to potential harm through the release of their private information.</p>
+</section>
+<section id="permission-and-data-use-policies" class="level4">
+<h4 class="anchored" data-anchor-id="permission-and-data-use-policies">Permission and Data Use Policies</h4>
+<p>In addition to lacking user consent, the researchers also did not obtain permission from OkCupid itself. The platform’s terms of service explicitly prohibit scraping or collecting user data without authorization. By ignoring these rules, the researchers bypassed the established permission structure for data use. In responsible research, permission structures help balance open scientific inquiry with the rights of data owners and subjects. In this case, the researchers justified their actions by saying that the data were “public,” but that reasoning overlooks the context of publication: users shared their profiles for dating, not for scientific analysis.</p>
+</section>
+<section id="anonymity-and-identifiability" class="level4">
+<h4 class="anchored" data-anchor-id="anonymity-and-identifiability">Anonymity and Identifiability</h4>
+<p>Another major problem was that the released dataset was not anonymized. The researchers included usernames, locations, and detailed responses that could easily lead to re-identification. Since the data included highly sensitive information such as sexual orientation and political affiliation, a lack of anonymization posed real risks of exposure, discrimination, or harassment. Ethical data science requires either anonymizing data or adding “noise” (small distortions) to protect identities, but the researchers took no such precautions. Their failure to protect anonymity made the dataset deeply unethical to share.</p>
+</section>
+<section id="data-sharing-and-accessibility" class="level4">
+<h4 class="anchored" data-anchor-id="data-sharing-and-accessibility">Data Sharing and Accessibility</h4>
+<p>The researchers’ decision to make the dataset publicly available amplified the harm. They uploaded it to the Open Science Framework, where anyone could download it. Their intention may have been to promote transparency and open research, which are generally good data science values. However, in this case, openness came at the cost of privacy and safety. Sharing sensitive, identifiable data publicly transformed private individuals into involuntary research subjects. Instead of promoting scientific integrity, the decision undermined it by disregarding fundamental principles of respect and confidentiality.</p>
+</section>
+</section>
+<section id="why-does-this-matter" class="level3">
+<h3 class="anchored" data-anchor-id="why-does-this-matter">Why does this matter?</h3>
+<p>This case matters because it exposes the tension between the ideals of open data and the rights of individuals to control their personal information as well as the issue of privacy on the internet. The people who benefited from this dataset were primarily researchers seeking to create this dataset. Those who were harmed were the OkCupid users, whose sensitive identities were exposed without their knowledge or consent. While there was no profit motive here, the ethical violations stemmed from a form of data power: the assumption that because data are accessible, they are available for use. This mindset reflects a broader problem in data science, prioritizing curiosity and discovery over responsibility and human dignity. The OkCupid case reminds us that just because data can be collected and analyzed does not mean it should be.</p>
+</section>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<p>Resnick, B. (2016, May 12). <em>Researchers just released profile data on 70,000 OkCupid users without permission</em>. Vox. https://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release</p>
+<p>Xiao, T., &amp; Ma, Y. (2021). A Letter to the <em>Journal of Statistics and Data Science Education</em> — A Call for Review of “OkCupid Data for Introductory Statistics and Data Science Courses” by Albert Y. Kim and Adriana Escobedo-Land. <em>Journal of Statistics and Data Science Education</em>, 29(2), 214–215. https://doi.org/10.1080/26939169.2021.1930812</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

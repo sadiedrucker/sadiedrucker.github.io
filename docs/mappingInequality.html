@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>New York Times Headlines – sadiedrucker.github.io</title>
+<title>mappingInequality – sadiedrucker.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -197,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">New York Times Headlines</h1>
+<h1 class="title">mappingInequality</h1>
 </div>
 
 
@@ -215,134 +181,297 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
-✔ forcats   1.0.0     ✔ stringr   1.6.0
-✔ ggplot2   4.0.1     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.2.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RTextTools) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: SparseM</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(NYTimes)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nyt<span class="ot">&lt;-</span><span class="fu">as_tibble</span>(NYTimes)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>nyt<span class="ot">&lt;-</span>nyt <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date=</span><span class="fu">as.Date</span>(Date, <span class="at">format =</span> <span class="st">"%d-%b-%y"</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>nyt_clean <span class="ot">&lt;-</span> nyt <span class="sc">|&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clean_headline=</span>Title <span class="sc">|&gt;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_to_lower</span>()<span class="sc">|&gt;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace_all</span>(<span class="st">"[^a-z</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">" "</span>)<span class="sc">|&gt;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_squish</span>(),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">year=</span><span class="fu">year</span>(Date)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>nyt_mentions <span class="ot">&lt;-</span> nyt_clean <span class="sc">|&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton =</span> <span class="fu">str_detect</span>(clean_headline, <span class="st">"(?&lt;![a-z])clinton(?![a-z])"</span>),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush =</span> <span class="fu">str_detect</span>(clean_headline, <span class="st">"(?&lt;![a-z])bush(?![a-z])"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>nyt_periods <span class="ot">&lt;-</span> nyt_mentions <span class="sc">|&gt;</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">period =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"1997-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2001-01-20"</span>) <span class="sc">~</span> <span class="st">"Clinton Era </span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="st">      (01/20/1997 to 01/20/2001)"</span>,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"2001-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2005-01-20"</span>) <span class="sc">~</span> <span class="st">"Bush era </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">      (01/20/2001 to 01/20/2005)"</span>,</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(period))</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>nyt_counts <span class="ot">&lt;-</span> nyt_periods <span class="sc">|&gt;</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(period) <span class="sc">|&gt;</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton_mentions =</span> <span class="fu">sum</span>(clinton),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush_mentions =</span> <span class="fu">sum</span>(bush)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>nyt_plot<span class="ot">&lt;-</span>nyt_counts<span class="sc">|&gt;</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(clinton_mentions, bush_mentions),</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"name"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>) </span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nyt_plot, <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> count, <span class="at">fill =</span> name)) <span class="sc">+</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"NYT Headline Mentions: Clinton vs Bush"</span>,</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Presidential Era"</span>, </span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Mentions"</span>,</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"President"</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"clinton_mentions"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"bush_mentions"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"clinton_mentions"</span> <span class="ot">=</span> <span class="st">"Clinton mentions"</span>,</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>               <span class="st">"bush_mentions"</span> <span class="ot">=</span> <span class="st">"Bush mentions"</span>)</span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NYTHeadlines_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code>python:         /home/sgdb2025/.local/share/r-miniconda/envs/r-reticulate/bin/python
+libpython:      /home/sgdb2025/.local/share/r-miniconda/envs/r-reticulate/lib/libpython3.10.so
+pythonhome:     /home/sgdb2025/.local/share/r-miniconda/envs/r-reticulate:/home/sgdb2025/.local/share/r-miniconda/envs/r-reticulate
+version:        3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:29:10) [GCC 14.3.0]
+numpy:          /home/sgdb2025/.local/share/r-miniconda/envs/r-reticulate/lib/python3.10/site-packages/numpy
+numpy_version:  2.2.6
+
+NOTE: Python version was forced by use_python() function</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nyt_trend <span class="ot">&lt;-</span> nyt_mentions <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"1997-01-20"</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;</span> <span class="fu">as.Date</span>(<span class="st">"2005-01-20"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">floor_date</span>(Date, <span class="st">"month"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">clinton =</span> <span class="fu">sum</span>(clinton),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bush    =</span> <span class="fu">sum</span>(bush)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(clinton, bush),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nyt_trend, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> count, <span class="at">color =</span> name)) <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="at">date_breaks =</span> <span class="st">"6 months"</span>) <span class="sc">+</span> </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"clinton"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"bush"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"clinton"</span> <span class="ot">=</span> <span class="st">"Clinton mentions"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>               <span class="st">"bush"</span> <span class="ot">=</span> <span class="st">"Bush mentions"</span>)) <span class="sc">+</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Monthly NYT Headline Mentions: Clinton vs Bush"</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Month"</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Mentions"</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"President"</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">8</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Figure({
+    'data': [{'hoverinfo': 'none',
+              'line': {'color': 'gray', 'width': 0.5},
+              'mode': 'lines',
+              'type': 'scatter',
+              'x': [-0.40740508660193436, -0.2749864063573395, None, ...,
+                    -0.9111377958969892, -0.9159959409415607, None],
+              'y': [0.43309849971471126, 0.11927458250855433, None, ...,
+                    0.17127735817319978, -0.38532483336629253, None]},
+             {'hoverinfo': 'text',
+              'marker': {'color': 'lightgreen', 'line': {'width': 1}, 'size': 12},
+              'mode': 'markers',
+              'name': 'Under 10%',
+              'text': [Arleta, Los Angeles&lt;br&gt;Poverty Rate: 9.43%&lt;br&gt;91.27% Not
+                       White, Elysian Valley, Los Angeles&lt;br&gt;Poverty Rate:
+                       7.18%&lt;br&gt;83.38% Not White, Griffith Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 0%&lt;br&gt;37.64% Not White, Los Feliz,
+                       Los Angeles&lt;br&gt;Poverty Rate: 9.22%&lt;br&gt;37.64% Not White,
+                       Silver Lake, Los Angeles&lt;br&gt;Poverty Rate: 9.27%&lt;br&gt;56.64%
+                       Not White, Palms, Los Angeles&lt;br&gt;Poverty Rate:
+                       7.7%&lt;br&gt;59.18% Not White, Rancho Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 7.55%&lt;br&gt;42.16% Not White, Beverly
+                       Grove, Los Angeles&lt;br&gt;Poverty Rate: 9.88%&lt;br&gt;Los Angeles,18
+                       % Not White, Carthay, Los Angeles&lt;br&gt;Poverty Rate:
+                       4.67%&lt;br&gt;23.27% Not White, Fairfax, Los Angeles&lt;br&gt;Poverty
+                       Rate: 9.46%&lt;br&gt;39.51% Not White, Hancock Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 6.69%&lt;br&gt;39.55% Not White, Century
+                       City, Los Angeles&lt;br&gt;Poverty Rate: 6.82%&lt;br&gt;39.67% Not
+                       White, Brentwood, Los Angeles&lt;br&gt;Poverty Rate:
+                       6.09%&lt;br&gt;23.88% Not White, West Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 7.35%&lt;br&gt;39.6% Not White,
+                       Beverlywood, Los Angeles&lt;br&gt;Poverty Rate: 4.06%&lt;br&gt;40.05%
+                       Not White, Chatsworth, Los Angeles&lt;br&gt;Poverty Rate:
+                       5.33%&lt;br&gt;60% Not White, Cheviot Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 2.02%&lt;br&gt;23.1% Not White, Mar
+                       Vista, Los Angeles&lt;br&gt;Poverty Rate: 7.81%&lt;br&gt;49.28% Not
+                       White, Playa Vista, Los Angeles&lt;br&gt;Poverty Rate:
+                       4.88%&lt;br&gt;43.11% Not White, Encino, Los Angeles&lt;br&gt;Poverty
+                       Rate: 7.9%&lt;br&gt;25.19% Not White, Sherman Oaks, Los
+                       Angeles&lt;br&gt;Poverty Rate: 7.5%&lt;br&gt;35.44% Not White, Studio
+                       City, Los Angeles&lt;br&gt;Poverty Rate: 7.01%&lt;br&gt;31.53% Not
+                       White, Tarzana, Los Angeles&lt;br&gt;Poverty Rate: 8.69%&lt;br&gt;26.34%
+                       Not White, Granada Hills, Los Angeles&lt;br&gt;Poverty Rate:
+                       8.15%&lt;br&gt;58.71% Not White, Mission Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 9.8%&lt;br&gt;83.66% Not White, Hansen
+                       Dam, Los Angeles&lt;br&gt;Poverty Rate: 0%&lt;br&gt;93.75% Not White,
+                       Lake View Terrace, Los Angeles&lt;br&gt;Poverty Rate: 7.36%&lt;br&gt;79%
+                       Not White, Sunland, Los Angeles&lt;br&gt;Poverty Rate:
+                       6.95%&lt;br&gt;39.39% Not White, Hollywood Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 9.77%&lt;br&gt;34.92% Not White,
+                       Hollywood Hills West, Los Angeles&lt;br&gt;Poverty Rate:
+                       7.05%&lt;br&gt;34.92% Not White, Venice, Los Angeles&lt;br&gt;Poverty
+                       Rate: 9.56%&lt;br&gt;34.01% Not White, Panorama City, Los
+                       Angeles:&lt;br&gt;Poverty Rate: 0%&lt;br&gt;Demographics unknown, Lake,
+                       Los Angeles&lt;br&gt;Poverty Rate: 9.27%&lt;br&gt;56.64% Not White,
+                       Pacific Palisades, Los Angeles&lt;br&gt;Poverty Rate:
+                       4.71%&lt;br&gt;18.62% Not White, Shadow Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 6.62%&lt;br&gt;27.43% Not White, Playa
+                       del Rey, Los Angeles&lt;br&gt;Poverty Rate: 5.43%&lt;br&gt;35.72% Not
+                       White, Westchester, Los Angeles&lt;br&gt;Poverty Rate:
+                       6.94%&lt;br&gt;51.9% Not White, Sepulveda Basin, Los
+                       Angeles&lt;br&gt;Poverty Rate: 7.84%&lt;br&gt;60.98% Not White, Toluca
+                       Lake, Los Angeles&lt;br&gt;Poverty Rate: 7.03%&lt;br&gt;33.83% Not
+                       White, Woodland Hills, Los Angeles&lt;br&gt;Poverty Rate:
+                       8.66%&lt;br&gt;42.82% Not White],
+              'type': 'scatter',
+              'x': [0.1453892076883636, 0.262822940918965, 0.5996558906486003,
+                    0.9775265339233993, 0.4619690435949174, -0.6094933454425137,
+                    -0.5194755281851139, -0.4137239857694402, -0.7200561111732845,
+                    -0.15672432840770664, 0.10005916876571384,
+                    -0.12559205099817178, 0.7167691810713943, -0.5706033896888834,
+                    -0.13018334275035384, 0.6360829526570302, -0.37765394977478484,
+                    -0.007615436187139592, -0.3376595267779396,
+                    0.055697143619450246, -0.016356699614997104,
+                    0.6500631332375019, -0.3738964583285017, -0.3811169682900235,
+                    0.12040341151225757, -0.2020974689275118, -0.777898506245375,
+                    -0.8639584512721665, 0.8251170810039832, -0.06715950851110965,
+                    -0.7887622023382792, -0.49804846705130956, 0.48450246906196337,
+                    -0.1416607174632655, -0.027294245665615828,
+                    -0.9111377958969892, -0.9159959409415607, 0.7245972951712814,
+                    0.8259092581539338, -0.357570353332007],
+              'y': [-0.20934345878913435, 0.19861227244706062,
+                    -0.3932761131523392, 0.24393669514635516, 0.2844456237402858,
+                    -0.6201272814438735, -0.44612833145757674, 0.02171625904333297,
+                    0.20066230946144903, 0.5995463424184203, 0.03850712090122082,
+                    -0.5105345165676675, 0.5547844872112914, -0.7760571125251258,
+                    0.18485743355864087, 0.6159247984050183, -0.9148383016965898,
+                    -0.2269269622239886, 0.48813757413437153, -0.845862852272832,
+                    -0.4462891264650179, -0.7315672938910092, -0.31833697019764307,
+                    0.7880325360169153, 0.7234854299199991, -0.007622412718004244,
+                    0.060661124514511354, -0.2187962577713776, -0.650034287145366,
+                    -0.9902420099497254, 0.3635453801743143, 0.8101078914982904,
+                    0.8085460868251518, 0.9088427546358935, -1.0,
+                    0.17127735817319978, -0.38532483336629253, -0.6259892964006654,
+                    -0.4941783402690854, 0.7946165554081283]},
+             {'hoverinfo': 'text',
+              'marker': {'color': 'yellow', 'line': {'width': 1}, 'size': 12},
+              'mode': 'markers',
+              'name': '10-20%',
+              'text': [Chesterfield Square, Los Angeles&lt;br&gt;Poverty Rate:
+                       19.2%&lt;br&gt;98.5% Not White, Harvard Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 17.25%&lt;br&gt;98.2% Not White, Mid-
+                       City, Los Angeles&lt;br&gt;Poverty Rate: 13.42%&lt;br&gt;84.97% Not
+                       White, West Adams, Los Angeles&lt;br&gt;Poverty Rate:
+                       16.85%&lt;br&gt;89.8% Not White, North Hills, Los
+                       Angeles&lt;br&gt;Poverty Rate: 17.58%&lt;br&gt;83.66% Not White,
+                       Panorama City, Los Angeles&lt;br&gt;Poverty Rate: 19.67%&lt;br&gt;89.2%
+                       Not White, Mid-Wilshire, Los Angeles&lt;br&gt;Poverty Rate:
+                       12.71%&lt;br&gt;38.56% Not White, Atwater Village, Los
+                       Angeles&lt;br&gt;Poverty Rate: 12.61%&lt;br&gt;60.85% Not White, Echo
+                       Park, Los Angeles&lt;br&gt;Poverty Rate: 16.78%&lt;br&gt;66.91% Not
+                       White, Glassell Park, Los Angeles&lt;br&gt;Poverty Rate:
+                       12.59%&lt;br&gt;74.67% Not White, Hyde Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 19.02%&lt;br&gt;95.69% Not White,
+                       Sawtelle, Los Angeles&lt;br&gt;Poverty Rate: 11.97%&lt;br&gt;50% Not
+                       White, West Los Angeles, Los Angeles&lt;br&gt;Poverty Rate:
+                       10.15%&lt;br&gt;49.9% Not White, Pico-Robertson, Los
+                       Angeles&lt;br&gt;Poverty Rate: 10.63%&lt;br&gt;27% Not White, Windsor
+                       Square, Los Angeles&lt;br&gt;Poverty Rate: 10.33%&lt;br&gt;71.45% Not
+                       White, El Sereno, Los Angeles&lt;br&gt;Poverty Rate:
+                       16.17%&lt;br&gt;90.79% Not White, Gramercy Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 10%&lt;br&gt;97.69% Not White, Canoga
+                       Park, Los Angeles&lt;br&gt;Poverty Rate: 15.74%&lt;br&gt;76.6% Not
+                       White, Winnetka, Los Angeles&lt;br&gt;Poverty Rate:
+                       17.76%&lt;br&gt;68.62% Not White, Highland Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 12.73%&lt;br&gt;78.36% Not White,
+                       Montecito Heights, Los Angeles&lt;br&gt;Poverty Rate:
+                       13.06%&lt;br&gt;78.69% Not White, Eagle Rock, Los
+                       Angeles&lt;br&gt;Poverty Rate: 10.14%&lt;br&gt;67.99% Not White, Del
+                       Rey, Los Angeles&lt;br&gt;Poverty Rate: 14.69%&lt;br&gt;59.36% Not
+                       White, Larchmont, Los Angeles&lt;br&gt;Poverty Rate:
+                       11.09%&lt;br&gt;46.28% Not White, Reseda, Los Angeles&lt;br&gt;Poverty
+                       Rate: 12.98%&lt;br&gt;75.35% Not White, Lake Balboa, Los
+                       Angeles&lt;br&gt;Poverty Rate: 11.08%&lt;br&gt;64.35% Not White, Leimert
+                       Park, Los Angeles&lt;br&gt;Poverty Rate: 17.42%&lt;br&gt;94.78% Not
+                       White, Pacoima, Los Angeles&lt;br&gt;Poverty Rate:
+                       17.71%&lt;br&gt;97.54% Not White, Tujunga, Los Angeles&lt;br&gt;Poverty
+                       Rate: 13.73%&lt;br&gt;42.71% Not White, Harbor City, Los
+                       Angeles&lt;br&gt;Poverty Rate: 13.68%&lt;br&gt;83.25% Not White, Harbor
+                       Gateway, Los Angeles&lt;br&gt;Poverty Rate: 15.45%&lt;br&gt;92.69% Not
+                       White,  Park, Los Angeles&lt;br&gt;Poverty Rate: 15.74%&lt;br&gt;76.6%
+                       Not White, Northridge, Los Angeles&lt;br&gt;Poverty Rate:
+                       14.08%&lt;br&gt;62.21% Not White, North Hollywood, Los
+                       Angeles&lt;br&gt;Poverty Rate: 18.45%&lt;br&gt;68.54% Not White, Sun
+                       Valley, Los Angeles&lt;br&gt;Poverty Rate: 12.72%&lt;br&gt;77.53% Not
+                       White, Valley Glen, Los Angeles&lt;br&gt;Poverty Rate:
+                       18.92%&lt;br&gt;49.98% Not White, Valley Village, Los
+                       Angeles&lt;br&gt;Poverty Rate: 11.92%&lt;br&gt;44.72% Not White, San
+                       Pedro, Los Angeles&lt;br&gt;Poverty Rate: 13.47%&lt;br&gt;68.04% Not
+                       White],
+              'type': 'scatter',
+              'x': [-0.43450498394542986, 0.08392649157539682,
+                    -0.5846568072666827, -0.4913525044357983, -0.1830065206851625,
+                    0.527088529125494, -0.5135645447814721, 0.6424347265905308,
+                    -0.09217934613151743, -0.05827767434764461,
+                    -0.18985984948358686, -0.5180906641606533, -0.1067589991174673,
+                    -0.5770721259562483, 0.08489239342481855, -0.25888730360960144,
+                    0.3032499446238715, -0.10997307389731065, 0.3490074653661135,
+                    0.17487854643749506, -0.6210079692364615, 0.2222267897131468,
+                    -0.8540563133705059, 0.19886511464234885, 0.644409091253123,
+                    0.6398336118793864, 0.023362936460418954, -0.5136311291207963,
+                    -0.042545927517577624, 0.40947776056841706, 0.5297801323167884,
+                    0.7202233505342805, 0.15951753888295006, 0.902960479168365,
+                    0.09338737460588922, 0.9008927217472638, 0.483097900395255,
+                    0.4974607648373291],
+              'y': [0.6131924599399112, 0.20262118204024623, 0.10321791954660797,
+                    0.4483546734070378, 0.726692050393926, 0.07122884358744089,
+                    0.01409604175967331, 0.04650818255079795, 0.43620061467160637,
+                    -0.2554194545501712, 0.8213606936593253, -0.5515283241752684,
+                    -0.39056769586976586, -0.29231197777976087, 0.5587833373986588,
+                    -0.7458849263816393, 0.4856154466266691, -0.43506427215505505,
+                    -0.11268742126419484, -0.04534373297960508,
+                    -0.34433502118075104, -0.8362701591239124, -0.2716739615781389,
+                    0.42469290327982745, -0.31091611718405254,
+                    -0.07546519890535636, 0.7958487438618109, -0.7545929999405973,
+                    -0.7928155429249178, -0.6923130335155507, -0.8332351227264564,
+                    0.6828809191689993, 0.27506563495565717, -0.15297125140484957,
+                    -0.5907364896418226, 0.3638568067880545, -0.8803941480841606,
+                    0.5999558643775708]},
+             {'hoverinfo': 'text',
+              'marker': {'color': 'orange', 'line': {'width': 1}, 'size': 12},
+              'mode': 'markers',
+              'name': '20-30%',
+              'text': [Adams-Normandie, Los Angeles&lt;br&gt;Poverty Rate:
+                       24.92%&lt;br&gt;90.24% Not White, Arlington Heights, Los
+                       Angeles&lt;br&gt;Poverty Rate: 21.64%&lt;br&gt;94.39% Not White, Baldwin
+                       Hills/Crenshaw, Los Angeles&lt;br&gt;Poverty Rate:
+                       20.69%&lt;br&gt;91.58% Not White, Exposition Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 24.09%&lt;br&gt;97.73% Not White, Harvard
+                       Heights, Los Angeles&lt;br&gt;Poverty Rate: 23.5%&lt;br&gt;94.21% Not
+                       White, Jefferson Park, Los Angeles&lt;br&gt;Poverty Rate:
+                       20.52%&lt;br&gt;90.84% Not White, Koreatown, Los
+                       Angeles&lt;br&gt;Poverty Rate: 20.98%&lt;br&gt;90.11% Not White, Pico-
+                       Union, Los Angeles&lt;br&gt;Poverty Rate: 27.48%&lt;br&gt;94.95% Not
+                       White, Vermont Square, Los Angeles&lt;br&gt;Poverty Rate:
+                       21.2%&lt;br&gt;97.79% Not White, Boyle Heights, Los
+                       Angeles&lt;br&gt;Poverty Rate: 22.96%&lt;br&gt;97.36% Not White, Cypress
+                       Park, Los Angeles&lt;br&gt;Poverty Rate: 20.2%&lt;br&gt;86.42% Not
+                       White, Lincoln Heights, Los Angeles&lt;br&gt;Poverty Rate:
+                       22.61%&lt;br&gt;92.18% Not White, Westwood, Los Angeles&lt;br&gt;Poverty
+                       Rate: 26.58%&lt;br&gt;50.34% Not White, Broadway-Manchester, Los
+                       Angeles&lt;br&gt;Poverty Rate: 29.68%&lt;br&gt;99.28% Not White,
+                       Florence, Los Angeles&lt;br&gt;Poverty Rate: 23.73%&lt;br&gt;99.34% Not
+                       White, Green Meadows, Los Angeles&lt;br&gt;Poverty Rate:
+                       23.3%&lt;br&gt;99.78% Not White, South Park, Los
+                       Angeles&lt;br&gt;Poverty Rate: 27.37%&lt;br&gt;99.15% Not White,
+                       Vermont-Slauson, Los Angeles&lt;br&gt;Poverty Rate:
+                       25.58%&lt;br&gt;98.23% Not White, Vermont Vista, Los
+                       Angeles&lt;br&gt;Poverty Rate: 27.38%&lt;br&gt;98.45% Not White,
+                       Central-Alameda, Los Angeles&lt;br&gt;Poverty Rate:
+                       27.41%&lt;br&gt;99.31% Not White, Chinatown, Los
+                       Angeles&lt;br&gt;Poverty Rate: 29.52%&lt;br&gt;85.25% Not White, East
+                       Hollywood, Los Angeles&lt;br&gt;Poverty Rate: 21.82%&lt;br&gt;69.28% Not
+                       White, Hollywood, Los Angeles&lt;br&gt;Poverty Rate:
+                       21.82%&lt;br&gt;69.28% Not White, Wilmington, Los
+                       Angeles&lt;br&gt;Poverty Rate: 20.01%&lt;br&gt;96.47% Not White, Van
+                       Nuys, Los Angeles&lt;br&gt;Poverty Rate: 20.41%&lt;br&gt;78.87% Not
+                       White],
+              'type': 'scatter',
+              'x': [-0.40740508660193436, -0.2749864063573395,
+                    -0.6049151297057765, -0.25619280900235497, -0.577206771742169,
+                    -0.7251100623201999, -0.027975548275224454,
+                    -0.22979743435882657, -0.2198181085892773, 0.1305294504604127,
+                    0.19956744153234784, 0.054013791513009994, 0.23886317187922668,
+                    -0.17359662938743847, 0.0522103652056555, 0.6304754644949226,
+                    -0.19894151610276656, -0.11362814280541385,
+                    0.27726005272870763, 0.4349154704246452, -0.24917775563214442,
+                    0.39245507574474897, 0.6591496182167514, 0.7410892822060311,
+                    0.8307332065851589],
+              'y': [0.43309849971471126, 0.11927458250855433, 0.07727084190311338,
+                    0.42420675729656654, 0.5007174626403059, 0.1279744847510375,
+                    0.25246189524200546, 0.02601513974128172, 0.5616904531024018,
+                    -0.9392778020162066, -0.29234610495122204,
+                    -0.31327736428356573, -0.4093570327193499, 0.3772202649332622,
+                    0.5241670736964474, 0.3267055293031771, -0.11429105447831217,
+                    0.40824034443906576, 0.109668679289817, -0.40249317766174214,
+                    -0.13000217373113487, 0.5375694098649033, 0.24589138191169474,
+                    -0.5367001471840234, 0.2573681007638727]},
+             {'hoverinfo': 'text',
+              'marker': {'color': 'red', 'line': {'width': 1}, 'size': 12},
+              'mode': 'markers',
+              'name': '30-40%',
+              'text': [Westlake, Los Angeles&lt;br&gt;Poverty Rate: 39.35%&lt;br&gt;93.63% Not
+                       White, Downtown, Los Angeles&lt;br&gt;Poverty Rate:
+                       30.37%&lt;br&gt;74.66% Not White, Vermont Knolls, Los
+                       Angeles&lt;br&gt;Poverty Rate: 31.43%&lt;br&gt;98.43% Not White, Watts,
+                       Los Angeles&lt;br&gt;Poverty Rate: 32.61%&lt;br&gt;99.2% Not White,
+                       Historic South-Central, Los Angeles&lt;br&gt;Poverty Rate:
+                       31.08%&lt;br&gt;97.75% Not White],
+              'type': 'scatter',
+              'x': [-0.039392441887369206, 0.023275528739403046,
+                    -0.42303870515699854, 0.2707475899032505, 0.3482060632062476],
+              'y': [0.036896617538762354, -0.02230566683118407, 0.394818640768401,
+                    0.6146424308305406, 0.15875590385655275]},
+             {'hoverinfo': 'text',
+              'marker': {'color': 'black', 'line': {'width': 1}, 'size': 12},
+              'mode': 'markers',
+              'name': 'Over 40%',
+              'text': [University Park, Los Angeles&lt;br&gt;Poverty Rate:
+                       47.16%&lt;br&gt;73.22% Not White],
+              'type': 'scatter',
+              'x': [-0.4986868839947607],
+              'y': [0.29098028778193563]}],
+    'layout': {'height': 800,
+               'hovermode': 'closest',
+               'margin': {'b': 10, 'l': 10, 'r': 10, 't': 40},
+               'plot_bgcolor': 'white',
+               'showlegend': True,
+               'template': '...',
+               'title': {'text': 'LA Neighborhoods by Poverty Rate (with Race Demographics)'},
+               'width': 1000,
+               'xaxis': {'showgrid': False, 'showticklabels': False, 'zeroline': False},
+               'yaxis': {'showgrid': False, 'showticklabels': False, 'zeroline': False}}
+})</code></pre>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="NYTHeadlines_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-</div>
+<iframe src="network_graph.html" width="1000" height="800">
+</iframe>
 
 
 

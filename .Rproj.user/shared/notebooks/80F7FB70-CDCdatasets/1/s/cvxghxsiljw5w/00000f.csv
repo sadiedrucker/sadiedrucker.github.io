@@ -1,148 +1,0 @@
-"0","library(tidyverse)"
-"2","── [1mAttaching core tidyverse packages[22m ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-[32m✔[39m [34mforcats  [39m 1.0.0     [32m✔[39m [34mstringr  [39m 1.6.0
-[32m✔[39m [34mlubridate[39m 1.9.4     [32m✔[39m [34mtibble   [39m 3.3.0
-[32m✔[39m [34mpurrr    [39m 1.2.0     [32m✔[39m [34mtidyr    [39m 1.3.1
-[32m✔[39m [34mreadr    [39m 2.1.6     "
-"2","── [1mConflicts[22m ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
-[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
-[36mℹ[39m Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors"
-"0","library(rvest)"
-"2","
-Attaching package: ‘rvest’
-
-"
-"2","The following object is masked from ‘package:readr’:
-
-    guess_encoding
-
-"
-"0","library(janitor)"
-"2","
-Attaching package: ‘janitor’
-
-"
-"2","The following objects are masked from ‘package:stats’:
-
-    chisq.test, fisher.test
-
-"
-"0","library(httr2)"
-"0","library(stringr)"
-"0",""
-"0","index <- rvest::read_html(""https://archive.org/download/20250128-cdc-datasets"")"
-"0","meta_urls <- index |> "
-"0","  rvest::html_element("".download-directory-listing"") |> "
-"0","  rvest::html_table() |> "
-"0","  janitor::clean_names() |> "
-"0","  dplyr::filter(stringr::str_ends(x1, ""-meta.csv"")) |> "
-"0","  dplyr::mutate("
-"0","    url = paste0("
-"0","      ""https://archive.org/download/20250128-cdc-datasets/"","
-"0","      URLencode(x1)"
-"0","    )"
-"0","  ) |> "
-"0","  dplyr::select(url)"
-"0","rm(index)"
-"0",""
-"0","# As of 2025-02-03, there are 1257 metadata CSVs available. We will load each"
-"0","# one and widen it, then stitch them all together. This can take a very long"
-"0","# time."
-"0","requests <- meta_urls$url |>"
-"0","  purrr::map(\(url) {"
-"0","    httr2::request(url) |> "
-"0","      httr2::req_retry("
-"0","        max_tries = 10,"
-"0","        is_transient = \(resp) {"
-"0","          httr2::resp_status(resp) %in% c(429, 500, 503)"
-"0","        },"
-"0","        # Always wait 10 seconds to retry. It seems to be a general throttle,"
-"0","        # but they don't tell us how long they need us to back off."
-"0","        backoff = \(i) 10"
-"0","      )"
-"0","  })"
-"0",""
-"0","resps <- httr2::req_perform_sequential(requests, on_error = ""continue"")"
-"2","iterating [32m■                               [39m   0% | ETA:  9m"
-"2","iterating [32m■                               [39m   0% | ETA:  9m"
-"2","iterating [32m■                               [39m   0% | ETA:  9m"
-"2","iterating [32m■                               [39m   0% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  9m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   1% | ETA:  8m"
-"2","iterating [32m■                               [39m   2% | ETA:  8m"
-"2","iterating [32m■                               [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   2% | ETA:  8m"
-"2","iterating [32m■■                              [39m   3% | ETA:  8m"
-"2","iterating [32m■■                              [39m   3% | ETA:  8m"
-"2","iterating [32m■■                              [39m   3% | ETA:  8m"
-"2","iterating [32m■■                              [39m   3% | ETA:  8m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   3% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   4% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■                              [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   5% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   6% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
-"2","iterating [32m■■■                             [39m   7% | ETA:  7m"
