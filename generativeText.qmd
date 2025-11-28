@@ -1,0 +1,70 @@
+---
+title: "Generative Text Using Python"
+format: html
+---
+
+
+This script uses Python’s choice function from the random module to generate a Markov-style text sequence based on the words in the Gettysburg Address. It first cleans and splits the text into individual words, then builds a dictionary mapping each word to all words that follow it in the original speech. Using this dictionary, the program randomly walks from word to word—always selecting a next word that actually followed the current one in the input text—to create a new, semi-coherent, 100-word generated speech that mimics the style of the original passage. 
+
+Input:  "Fourscore and seven years ago our fathers brought forth, on this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived, and so dedicated, can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of that field, as a final resting-place for those who here gave their lives, that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us that from these honored dead we take increased devotion to that cause for which they here gave the last full measure of devotion that we here highly resolve that these dead shall not have died in vain that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth."
+
+
+```{python}
+#| code-fold: true
+#| code-summary: "Click to show code"
+
+from random import choice
+from IPython.display import display, HTML
+import string
+
+text = (
+    "Fourscore and seven years ago our fathers brought forth, on this continent, "
+    "a new nation, conceived in liberty, and dedicated to the proposition that all men "
+    "are created equal. Now we are engaged in a great civil war, testing whether that "
+    "nation, or any nation so conceived, and so dedicated, can long endure. We are met "
+    "on a great battlefield of that war. We have come to dedicate a portion of that field, "
+    "as a final resting-place for those who here gave their lives, that that nation might live. "
+    "It is altogether fitting and proper that we should do this. But, in a larger sense, "
+    "we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, "
+    "living and dead, who struggled here, have consecrated it far above our poor power to add "
+    "or detract. The world will little note, nor long remember what we say here, but it can "
+    "never forget what they did here. It is for us the living, rather, to be dedicated here "
+    "to the unfinished work which they who fought here have thus far so nobly advanced. It is "
+    "rather for us to be here dedicated to the great task remaining before us that from these "
+    "honored dead we take increased devotion to that cause for which they here gave the last "
+    "full measure of devotion that we here highly resolve that these dead shall not have died "
+    "in vain that this nation, under God, shall have a new birth of freedom, and that government "
+    "of the people, by the people, for the people, shall not perish from the earth."
+)
+
+# Strip punctuation and split into words
+words = [w.strip(string.punctuation) for w in text.split()]
+
+# Function to create next-word dictionary
+def make_next_word_dict(words):
+    nextwords = {}
+    for i in range(len(words) - 1):
+        word = words[i]
+        next_word = words[i + 1]
+        if word not in nextwords:
+            nextwords[word] = []
+        nextwords[word].append(next_word)
+    return nextwords
+
+# Create dictionary
+nextwords = make_next_word_dict(words)
+
+# Start generating text
+speech = choice(words)
+current_word = speech
+
+for i in range(100):
+    next_word = choice(nextwords.get(current_word, words))
+    speech += ' ' + next_word
+    current_word = next_word
+
+# Display output as HTML paragraph
+paragraph = f"<p>Output:<br>{speech}</p>"
+display(HTML(paragraph))
+```
+

@@ -22,6 +22,8 @@ website:
             href: mappingInequality.qmd
           - text: Art && Code
             href: art.qmd
+          - text: Generative Text
+            href: generativeText.qmd
       - text: Data Science Blog
         menu:
           - text: CDC Datasets
