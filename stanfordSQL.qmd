@@ -59,6 +59,7 @@ To investigate whether drivers stopped later at night tend to be younger, I anal
 ```{sql}
 #| connection: con_traffic
 #| output.var: "age_of_stops"
+#| cache: true
 SELECT 
     HOUR(time) AS stop_hour,
     COUNT(*) AS n_stops,
@@ -71,7 +72,7 @@ ORDER BY stop_hour;
 
 ```
 
-Table 1. Hourly distribution of traffic stops and the corresponding average age of drivers. The table reports the hour of the stop, the number of stops occurring during that hour, and the mean age of the subjects.
+**Table 1.** Hourly distribution of traffic stops and the corresponding average age of drivers. The table reports the hour of the stop, the number of stops occurring during that hour, and the mean age of the subjects.
 
 ```{r}
 age_of_stops
@@ -92,7 +93,7 @@ age_of_stops |>
   theme_minimal()
 ```
 
-Figure 1. Average age of drivers by hour of traffic stop. Each point represents the mean age of drivers stopped during that hour, with the connecting line illustrating changes across the 24-hour period.
+**Figure 1.** Average age of drivers by hour of traffic stop. Each point represents the mean age of drivers stopped during that hour, with the connecting line illustrating changes across the 24-hour period.
 
 The plot shows that the average age of drivers decreases at later hours. Earlier in the day (e.g., 5 AM–5 PM), stopped drivers tend to average around 34-37 years old, while late-night stops (8 PM–5 AM) show average ages closer to 30-32 years old. This pattern suggests that the drivers stopped later at night are generally younger.
 
@@ -103,6 +104,7 @@ To assess whether traffic stops in Raleigh, N.C., involving people of color resu
 ```{sql}
 #| connection: con_traffic
 #| output.var: "race_and_arrests"
+#| cache: true
 SELECT 
     subject_race AS race,
     COUNT(*) AS total_stops,  
@@ -114,7 +116,7 @@ GROUP BY subject_race
 ORDER BY pct_arrest DESC;
 ```
 
-Table 2. Summary of traffic stops and arrest outcomes by race. The table lists each racial group, the total number of stops, the number of arrests, and the percentage of stops that resulted in arrest.
+**Table 2.** Summary of traffic stops and arrest outcomes by race. The table lists each racial group, the total number of stops, the number of arrests, and the percentage of stops that resulted in arrest.
 
 ```{r}
 race_and_arrests
@@ -136,7 +138,7 @@ ggplot( aes(x = fct_reorder(race, pct_arrest), y = pct_arrest)) +
   coord_flip()
 ```
 
-Figure 2. Percentage of traffic stops that resulted in arrest by race. Each bar represents the arrest rate for a racial group, ordered from highest to lowest percentage.
+**Figure 2.** Percentage of traffic stops that resulted in arrest by race. Each bar represents the arrest rate for a racial group, ordered from highest to lowest percentage.
 
 The plot shows that the highest percentage of stops that end in arrest (4.92%) occurs among Hispanic drivers. In contrast, the arrest rate for white drivers is substantially lower, at just 2.13%, indicating a notable disparity in arrest outcomes across racial groups.
 
@@ -147,6 +149,7 @@ To determine whether citations are issued more frequently to male or female driv
 ```{sql}
 #| connection: con_traffic
 #| output.var: "sex_and_citations"
+#| cache: true
 SELECT 
     subject_sex AS sex,
     COUNT(*) AS n_citations,
@@ -165,7 +168,7 @@ ORDER BY n_citations DESC;
 
 ```
 
-Table 3. Number and percentage of total citations issued to male and female drivers. The table reports the count of citations for each sex and the percentage these represent out of all citations issued.
+**Table 3.** Number and percentage of total citations issued to male and female drivers. The table reports the count of citations for each sex and the percentage these represent out of all citations issued.
 
 ```{r}
 sex_and_citations
@@ -184,7 +187,7 @@ ggplot(aes(x = sex, y = pct_of_total_citations, fill = sex)) +
   scale_fill_manual(values = c("female" = "pink", "male" = "steelblue"))
 ```
 
-Figure 3. Percentage of all citations attributed to male and female drivers. Each bar shows the proportion of total citations issued to each sex.
+**Figure 3.** Percentage of all citations attributed to male and female drivers. Each bar shows the proportion of total citations issued to each sex.
 
 Based on the data, male drivers receive a substantially larger share of citations, accounting for 62.62% of all citations issued, while female drivers receive only 37.48%. This indicates that men are cited noticeably more frequently than women.
 
