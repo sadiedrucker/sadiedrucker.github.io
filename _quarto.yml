@@ -36,6 +36,8 @@ website:
             href: Permutation.qmd
           - text: Ethics, Data, and Power
             href: ethics.qmd
+          - text: Stanford Open Policing Project
+            href: stanfordSQL.qmd
 format:
   html:
     theme: cosmo

@@ -1,6 +1,197 @@
 ---
-title: "Analyzing Stanford Open Policing Project (2020) Using SQL"
-format: html
+title: "Analyzing Stanford Open Policing Project (Pierson, 2020) Using SQL"
+format: 
+  html:
+    code-fold: true
+    
+execute:
+  message: false
+  warning: false
+  echo: true
 ---
 
+### What are we doing?
 
+The Stanford Open Policing Project was a study conducted by researchers at Stanford University who analyzed data from over 200 million traffic stops across the United States. The data from the project is stored in a Relational Database Management System (RDBMS), which is the basis for the programming language SQL. Using SQL, we can access and then manipulate data from this remote database.
+
+### Guiding Questions:
+
+1.  Are the drivers in traffic stops that occur later at night generally younger?
+
+2.  Do traffic stops with people of color end in arrest more frequently than with white drivers?
+
+3.  Are citations more frequently distributed to male or female drivers?
+
+### Establishing a connection:
+
+See the code below to see how we establish a SQL connection to the database.
+
+```{r}
+
+con_traffic <- DBI::dbConnect(
+
+  RMariaDB::MariaDB(),
+
+  dbname = "traffic",
+
+  host = Sys.getenv("TRAFFIC_HOST"),
+
+  user = Sys.getenv("TRAFFIC_USER"),
+
+  password = Sys.getenv("TRAFFIC_PWD")
+
+)
+
+```
+
+### Examining the RDBMS
+
+I first examined the tables contained in the RDBMS using the code below.
+
+```{sql connection=con_traffic}
+SHOW TABLES;
+```
+
+### Question 1:
+
+To investigate whether drivers stopped later at night tend to be younger, I analyzed statewide traffic stop data (from North Carolina on 4/01/2020) by comparing the hour of each stop to the average age of the driver involved. If younger drivers are disproportionately represented in late-night driving, we would expect to see a decline in average age during the later hours of the day.
+
+```{sql}
+#| connection: con_traffic
+#| output.var: "age_of_stops"
+SELECT 
+    HOUR(time) AS stop_hour,
+    COUNT(*) AS n_stops,
+    AVG(subject_age) AS avg_age
+FROM nc_statewide_2020_04_01
+WHERE subject_age IS NOT NULL 
+  AND time IS NOT NULL
+GROUP BY HOUR(time)
+ORDER BY stop_hour;
+
+```
+
+Table 1. Hourly distribution of traffic stops and the corresponding average age of drivers. The table reports the hour of the stop, the number of stops occurring during that hour, and the mean age of the subjects.
+
+```{r}
+age_of_stops
+```
+
+```{r}
+library(tidyverse)
+
+age_of_stops |>
+  ggplot(aes(x = stop_hour, y = avg_age)) +
+  geom_line(color = "lightblue") +
+  geom_point(color = "darkblue") +
+  labs(
+    x = "Hour Traffic Stop Occurred",
+    y = "Average Age of Subject",
+    title = "Average Age of Drivers by Hour of Traffic Stops"
+  ) +
+  theme_minimal()
+```
+
+Figure 1. Average age of drivers by hour of traffic stop. Each point represents the mean age of drivers stopped during that hour, with the connecting line illustrating changes across the 24-hour period.
+
+The plot shows that the average age of drivers decreases at later hours. Earlier in the day (e.g., 5 AM–5 PM), stopped drivers tend to average around 34-37 years old, while late-night stops (8 PM–5 AM) show average ages closer to 30-32 years old. This pattern suggests that the drivers stopped later at night are generally younger.
+
+### Question 2:
+
+To assess whether traffic stops in Raleigh, N.C., involving people of color result in arrests at higher rates than those involving white drivers, I examined the percentage of stops that ended in arrest for each racial group recorded in the dataset. By comparing arrest outcomes across races, we can evaluate whether notable disparities exist in how stops conclude.
+
+```{sql}
+#| connection: con_traffic
+#| output.var: "race_and_arrests"
+SELECT 
+    subject_race AS race,
+    COUNT(*) AS total_stops,  
+    SUM(arrest_made) AS n_arrests, 
+    ROUND(100.0 * SUM(arrest_made) / COUNT(*), 2) AS pct_arrest
+FROM nc_raleigh_2020_04_01
+WHERE subject_race IS NOT NULL
+GROUP BY subject_race
+ORDER BY pct_arrest DESC;
+```
+
+Table 2. Summary of traffic stops and arrest outcomes by race. The table lists each racial group, the total number of stops, the number of arrests, and the percentage of stops that resulted in arrest.
+
+```{r}
+race_and_arrests
+
+```
+
+```{r}
+library(forcats)
+
+race_and_arrests |>
+ggplot( aes(x = fct_reorder(race, pct_arrest), y = pct_arrest)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Arrest Rate by Race in Raleigh Traffic Stops",
+    x = "Race",
+    y = "Percent of Stops Ending in Arrest"
+  ) +
+  theme_minimal() +
+  coord_flip()
+```
+
+Figure 2. Percentage of traffic stops that resulted in arrest by race. Each bar represents the arrest rate for a racial group, ordered from highest to lowest percentage.
+
+The plot shows that the highest percentage of stops that end in arrest (4.92%) occurs among Hispanic drivers. In contrast, the arrest rate for white drivers is substantially lower, at just 2.13%, indicating a notable disparity in arrest outcomes across racial groups.
+
+### Question 3
+
+To determine whether citations are issued more frequently to male or female drivers, I analyzed all traffic stops in Raleigh, N.C., in which a citation was recorded. By comparing the proportion of total citations received by each sex, we can assess whether one group is cited more often than the other.
+
+```{sql}
+#| connection: con_traffic
+#| output.var: "sex_and_citations"
+SELECT 
+    subject_sex AS sex,
+    COUNT(*) AS n_citations,
+    (SELECT COUNT(*) 
+     FROM nc_raleigh_2020_04_01 
+     WHERE citation_issued = 1) AS total_citations,
+    ROUND(100.0 * COUNT(*) / 
+          (SELECT COUNT(*) 
+           FROM nc_raleigh_2020_04_01 
+           WHERE citation_issued = 1), 2) AS pct_of_total_citations
+FROM nc_raleigh_2020_04_01
+WHERE citation_issued = 1
+  AND subject_sex IS NOT NULL
+GROUP BY subject_sex
+ORDER BY n_citations DESC;
+
+```
+
+Table 3. Number and percentage of total citations issued to male and female drivers. The table reports the count of citations for each sex and the percentage these represent out of all citations issued.
+
+```{r}
+sex_and_citations
+```
+
+```{r}
+sex_and_citations |>
+ggplot(aes(x = sex, y = pct_of_total_citations, fill = sex)) +
+  geom_col() +
+  labs(
+    title = "Percentage of Citations by Sex",
+    x = "Sex",
+    y = "Percent of Total Citations"
+  ) +
+  theme_minimal() +
+  scale_fill_manual(values = c("female" = "pink", "male" = "steelblue"))
+```
+
+Figure 3. Percentage of all citations attributed to male and female drivers. Each bar shows the proportion of total citations issued to each sex.
+
+Based on the data, male drivers receive a substantially larger share of citations, accounting for 62.62% of all citations issued, while female drivers receive only 37.48%. This indicates that men are cited noticeably more frequently than women.
+
+### Conclusion 
+
+By leveraging SQL, I was able to answer complex questions about age patterns in late-night stops, racial disparities in arrest rates, and differences in citation frequency between male and female drivers. Overall, SQL offered a powerful, flexible, and transparent way to extract meaningful insights from a large and structured dataset.
+
+### Sources
+
+Pierson, Emma, Camelia Simoiu, Jan Overgoor, Sam Corbett-Davies, Daniel Jenson, Amy Shoemaker, Vignesh Ramachandran, et al. 2020. “A Large-Scale Analysis of Racial Disparities in Police Stops Across the United States.” *Nature Human Behaviour*, 1–10.
