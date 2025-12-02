@@ -1,5 +1,6 @@
 ---
-title: "stanfordSQL"
+title: "Analyzing Stanford Open Policing Project (2020) Using SQL"
 format: html
 ---
+
 
