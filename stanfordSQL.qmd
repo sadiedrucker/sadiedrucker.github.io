@@ -191,7 +191,7 @@ ggplot(aes(x = sex, y = pct_of_total_citations, fill = sex)) +
 
 Based on the data, male drivers receive a substantially larger share of citations, accounting for 62.62% of all citations issued, while female drivers receive only 37.48%. This indicates that men are cited noticeably more frequently than women.
 
-### Conclusion 
+### Conclusion
 
 By leveraging SQL, I was able to answer complex questions about age patterns in late-night stops, racial disparities in arrest rates, and differences in citation frequency between male and female drivers. Overall, SQL offered a powerful, flexible, and transparent way to extract meaningful insights from a large and structured dataset.
 
