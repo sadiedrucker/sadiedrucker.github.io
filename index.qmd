@@ -6,7 +6,7 @@ toc: false
 about: 
   template: trestles
   image-shape: rounded
-  image-width: 17em
+  image-width: 30em
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/sadie-drucker-a1887033b
@@ -16,13 +16,13 @@ about:
       href: mailto:sdrucker1002@scrippscollege.edu
 ---
 
-## Education
+# Education
 
 **Scripps College** — Claremont, CA\
 B.A. in Biology and Data Science \| Aug 2023 – Present\
 Dean's List Fall 2023-Spring 2025
 
-## About Me
+# About Me
 
 I’m a third-year student at Scripps College studying Biology and Data Science.
 

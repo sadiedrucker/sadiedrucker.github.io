@@ -1,0 +1,77 @@
+/* Top-level navbar items */
+.navbar .nav-link {
+  font-size: 1.3\rem;         /* adjust size */
+}
+
+/* Dropdown menu items */
+.navbar .dropdown-menu .dropdown-item {
+  font-size: 1.15rem;        /* adjust size */
+  /* padding: 0.6rem 1.2rem;*/    /* optional: makes items taller/spaced */
+}
+
+/* Dropdown menu header (if used) */
+.navbar .dropdown-header {
+  font-size: 1.2rem;
+}
+/* Title at top of page */
+.quarto-title h1.title {
+  font-size: 2.6rem;   /* change this size */
+  font-weight: 700;
+}
+
+/* About section text */
+.about-contents {
+  font-size: 1.15rem;  /* body text */
+}
+
+/* About section title (e.g., Education, About Me) */
+.about-contents h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* Your name under the photo */
+.about-contents .about-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.about-image img {
+  border: 10px solid #FECEE9;     /* border color + thickness */
+  border-radius: 12px;        /* keeps rounded edges (optional) */
+}
+/* Make the navbar taller */
+.navbar, .site-navbar {
+  height: 80px;               /* adjust to your preferred height */
+  display: flex;              /* enables flexbox */
+  align-items: center;        /* vertically centers navbar items */
+}
+
+/* Adjust top-level links to fit taller navbar */
+.navbar .nav-link {
+  padding-top: 0.8rem;        /* add vertical padding */
+  padding-bottom: 0.8rem;
+}
+
+/* Adjust dropdown items if you want them taller too */
+.navbar .dropdown-menu .dropdown-item {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+.columns {
+  align-items: center;     /* vertical centering within each grid cell */
+}
+
+.columns .column img {
+  height: 250px;      /* ← Set the height YOU want */
+  width: auto;        /* Preserve aspect ratio */
+  object-fit: cover;  /* Crop edges if necessary to fill uniform height */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.columns .column figure figcaption {
+  text-align: center;
+  margin-top: 0.5em;      /* optional: adjusts spacing above caption */
+  width: 100%;            /* ensures full-width caption under image */
+}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Generative Text Using Python – sadiedrucker.github.io</title>
+<title>Generative Text Using Python – Sadie Drucker</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">sadiedrucker.github.io</span>
+    <span class="navbar-title">Sadie Drucker</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -200,14 +200,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This script uses Python’s choice function from the random module to generate a Markov-style text sequence based on the words in the Gettysburg Address. It first cleans and splits the text into individual words, then builds a dictionary mapping each word to all words that follow it in the original speech. Using this dictionary, the program randomly walks from word to word—always selecting a next word that actually followed the current one in the input text—to create a new, semi-coherent, 100-word generated speech that mimics the style of the original passage.</p>
 <p>Input: “Fourscore and seven years ago our fathers brought forth, on this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived, and so dedicated, can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of that field, as a final resting-place for those who here gave their lives, that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us that from these honored dead we take increased devotion to that cause for which they here gave the last full measure of devotion that we here highly resolve that these dead shall not have died in vain that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.”</p>
-<div id="50ec7e53" class="cell" data-execution_count="1">
+<div id="1c846bbb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Click to show code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice</span>
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>display(HTML(paragraph))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p>Output:<br>in liberty and seven years ago our fathers brought forth on a new birth of the living rather for the living rather for us the earth testing whether that field as a new birth of that that this continent a great battlefield of that government of devotion that field as a final resting-place for us the living rather for those who fought here have consecrated it can long remember what we cannot hallow this ground The brave men are created equal Now we cannot dedicate a great battlefield of freedom and proper that all men living and dead shall not have</p>
+<p>Output:<br>add or detract The world will little note nor long endure We have consecrated it far above our poor power to be dedicated to the proposition that field as a larger sense we take increased devotion to dedicate we should do this But in vain that these dead shall not have thus far so conceived in vain that nation might live It is for the unfinished work which they who here dedicated can never forget what they who fought here gave the last full measure of that nation conceived and seven years ago our poor power to add or any nation</p>
 </div>
 </div>
 
