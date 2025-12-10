@@ -1,6 +1,5 @@
 ---
 title: "CDC Datasets"
-description: In the past years, there as been an effort to perserve and archive CDC datasets as the Trump administration removes this data from public view.
 format: 
   html:
     code-fold: true
@@ -12,7 +11,7 @@ execute:
   cache: true
 ---
 
-Data curated by Jon Harmon for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11' target='_blank'>Tidy Tuesday</a> from <a href='https://archive.org/download/20250128-cdc-datasets' target='_blank'>CDC datasets</a> on Internet Archive.
+In the past years, there has been an effort to preserve and archive CDC datasets as the Trump administration removes this data from public view. Much of this data has been backed up on archive.org. The data set we examined for this visualization was metadata about the CDC datasets that are archived on archive.org.
 
 ```{r}
 tuesdata <- tidytuesdayR::tt_load('2025-02-11')
@@ -25,7 +24,7 @@ library(rvest)
 library(janitor)
 library(httr2)
 library(stringr)
-
+#Cleaning code from Jon Harmon
 index <- rvest::read_html("https://archive.org/download/20250128-cdc-datasets")
 meta_urls <- index |> 
   rvest::html_element(".download-directory-listing") |> 
@@ -154,6 +153,7 @@ fpi_codes <- readr::read_csv("https://resources.data.gov/schemas/dcat-us/v1.1/Fe
 ```
 
 ```{r}
+#| fig-alt: Sideways bar graph display the top 10 topics of data sets archived in archive.org. 
 library(dplyr)
 library(ggplot2)
 
@@ -166,7 +166,7 @@ datasets_by_category <- cdc_datasets |>
 top_categories <- head(datasets_by_category, 10)
 
 ggplot(top_categories, aes(x = reorder(category, n_datasets), y = n_datasets)) +
-  geom_col(fill="pink") +
+  geom_col() +
   coord_flip() +
   labs(
     title = "Top 10 dataset categories",
@@ -177,4 +177,12 @@ ggplot(top_categories, aes(x = reorder(category, n_datasets), y = n_datasets)) +
 
 ```
 
-This plot displays the top ten categories for all datasets contained in the CDC datasets archive.
+This plot shows the top 10 categories across all datasets in the CDC datasets archive. The most popular being NNDSS (National Notifiable Disease Surveillance System), with almost 300 data sets.
+
+### Sources
+
+Centers for Disease Control and Prevention. (n.d.). CDC data portal \[Data set / database\]. <https://data.cdc.gov/>
+
+Harmon, J., & TidyTuesday Project. (2025, February 11). CDC datasets \[Source code\]. GitHub. <https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11>
+
+Harmon, J., & TidyTuesday Project. (2025, January 28). CDC datasets \[Data set\]. Internet Archive. <https://archive.org/download/20250128-cdc-datasets>

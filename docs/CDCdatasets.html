@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="In the past years, there as been an effort to perserve and archive CDC datasets as the Trump administration removes this data from public view.">
 
 <title>CDC Datasets – Sadie Drucker</title>
 <style>
@@ -201,25 +200,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sources" id="toc-sources" class="nav-link active" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">CDC Datasets</h1>
 </div>
 
-<div>
-  <div class="description">
-    In the past years, there as been an effort to perserve and archive CDC datasets as the Trump administration removes this data from public view.
-  </div>
-</div>
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Data curated by Jon Harmon for <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11" target="_blank">Tidy Tuesday</a> from <a href="https://archive.org/download/20250128-cdc-datasets" target="_blank">CDC datasets</a> on Internet Archive.</p>
+<p>In the past years, there has been an effort to preserve and archive CDC datasets as the Trump administration removes this data from public view. Much of this data has been backed up on archive.org. The data set we examined for this visualization was metadata about the CDC datasets that are archived on archive.org.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Cleaning code from Jon Harmon</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> rvest<span class="sc">::</span><span class="fu">read_html</span>(<span class="st">"https://archive.org/download/20250128-cdc-datasets"</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>meta_urls <span class="ot">&lt;-</span> index <span class="sc">|&gt;</span> </span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  rvest<span class="sc">::</span><span class="fu">html_element</span>(<span class="st">".download-directory-listing"</span>) <span class="sc">|&gt;</span> </span>
@@ -387,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>top_categories <span class="ot">&lt;-</span> <span class="fu">head</span>(datasets_by_category, <span class="dv">10</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_categories, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(category, n_datasets), <span class="at">y =</span> n_datasets)) <span class="sc">+</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"pink"</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 dataset categories"</span>,</span>
@@ -399,14 +399,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CDCdatasets_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="CDCdatasets_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="Sideways bar graph display the top 10 topics of data sets archived in archive.org." width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This plot displays the top ten categories for all datasets contained in the CDC datasets archive.</p>
+<p>This plot shows the top 10 categories across all datasets in the CDC datasets archive. The most popular being NNDSS (National Notifiable Disease Surveillance System), with almost 300 data sets.</p>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<p>Centers for Disease Control and Prevention. (n.d.). CDC data portal [Data set / database]. <a href="https://data.cdc.gov/" class="uri">https://data.cdc.gov/</a></p>
+<p>Harmon, J., &amp; TidyTuesday Project. (2025, February 11). CDC datasets [Source code]. GitHub. <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11" class="uri">https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-02-11</a></p>
+<p>Harmon, J., &amp; TidyTuesday Project. (2025, January 28). CDC datasets [Data set]. Internet Archive. <a href="https://archive.org/download/20250128-cdc-datasets" class="uri">https://archive.org/download/20250128-cdc-datasets</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

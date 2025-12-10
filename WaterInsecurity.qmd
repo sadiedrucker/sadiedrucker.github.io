@@ -1,6 +1,5 @@
 ---
 title: "Water Insecurity"
-description: Water insecurity differ spatially throughout the United States. In this data visualization, we explored which counties have the greatest percent of households lacking plumbing.   
 format: 
   html:
     code-fold: true
@@ -11,9 +10,12 @@ execute:
   echo: true
 ---
 
-Data curated by Niha Pereira for <a href='https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28' target='_blank'>Tidy Tuesday</a> from U.S. Census Bureau data.
+Water insecurity is influenced by several factors, including geographical location and socioeconomic status, and differs spatially across the United States. In this data visualization, we explored which counties have the greatest percentage of households lacking plumbing.
 
 ```{r, cache=TRUE}
+#| fig-alt: Sideways bar graph display the top 10 highests percentages of households lacking plumbing in the United States by county. 
+
+#Cleaning code from Niha Pereira
 library(tidytuesdayR)
 library(dplyr)
 library(ggplot2)
@@ -40,7 +42,7 @@ top10_lacking <- water_insecurity_2022 |>
   slice_head(n=10)
   
 ggplot(top10_lacking, aes(x=reorder(name, greatest_lacking), y=greatest_lacking))+
-  geom_col(fill="pink")+
+  geom_col()+
   coord_flip()+
   labs(
     title = "Top 10 areas lacking plumbing in the U.S. in 2022",
@@ -49,4 +51,19 @@ ggplot(top10_lacking, aes(x=reorder(name, greatest_lacking), y=greatest_lacking)
   ) +
   theme_minimal()
   
+
 ```
+
+From this visualization, we can see that Apache County, Arizona, has the greatest percentage of households living without plumbing at \~3.73%.
+
+### Sources
+
+We accessed U.S. Census water insecurity data via the TidyTuesday repository, which was originally extracted using the tidycensus R package.
+
+Pereira, N., & TidyTuesday Project. (2025, January 28). Water insecurity 2022 and 2023 \[Data set\]. GitHub. <https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-01-28>
+
+Walker, K. & Herman, M. (2025, July 24). tidycensus: Load US Census data in R (R package version 1.7.3) \[Software\]. <https://walker-data.com/tidycensus>
+
+U.S. Census Bureau. (2022). Tenure by plumbing facilities: American Community Survey, 1-year estimates detailed tables, Table B25049. <https://data.census.gov/table?q=B25049&y=2022>
+
+U.S. Census Bureau. (2023). Tenure by plumbing facilities: American Community Survey, 1-year estimates detailed tables, Table B25049. <https://data.census.gov/table?q=B25049&y=2023>
