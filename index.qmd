@@ -6,7 +6,7 @@ toc: false
 about: 
   template: trestles
   image-shape: rounded
-  image-width: 25em
+  image-width: 22em
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/sadie-drucker-a1887033b
