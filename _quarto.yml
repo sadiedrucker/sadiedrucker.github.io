@@ -47,6 +47,6 @@ format:
     page-layout: full
     css: styles.css
     toc: true
-    favicon: babyPhoto.jpeg
+    favicon: tinyBaby.png
 
 editor: visual
