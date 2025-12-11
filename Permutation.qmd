@@ -17,6 +17,8 @@ This simulation study investigates whether there is a statistically significant 
 ## Visualization of variables of interest
 
 ```{r}
+#| fig-alt: "A boxplot comparing bill length between male and female penguins in the sample. Male penguins show a higher median bill length and a slightly wider spread than females."
+
 library(tidyverse)
 library(palmerpenguins)
 library(ggplot2)
@@ -89,6 +91,7 @@ The mapping function used here runs the function *`perm_data()`* one thousand ti
 Each row in *`perm_stats`* represents one shuffled permutation: the permuted mean and median differences and the observed statistics.
 
 ```{r, cache=TRUE}
+#| fig-alt: "A histogram showing the permutation-based null distribution of mean bill-length differences between sexes, centered around zero. A vertical red line marks the observed mean difference from the sample, which lies far outside of most of the distribution."
 set.seed(47)
 perm_stats <- 
   map(c(1:1000), perm_data, data = clean_penguins) |> 
@@ -105,6 +108,7 @@ perm_stats |>
 ```
 
 ```{r}
+"A histogram showing the permutation-based null distribution of median bill-length differences between sexes, centered around zero. A vertical red line marks the observed median difference from the sample, which is at the tail end of the distribution."
 perm_stats |> 
   ggplot(aes(x = perm_median_diff)) + 
   geom_histogram() + 

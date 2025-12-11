@@ -22,7 +22,7 @@ The most significant ethical issue in this case concerns consent. None of the Ok
 
 #### Permission and Data Use Policies
 
-In addition to lacking user consent, the researchers also did not obtain permission from OkCupid itself. The platform’s terms of service explicitly prohibit scraping or collecting user data without authorization. By ignoring these rules, the researchers bypassed the established permission structure for data use. In responsible research, permission structures help balance open scientific inquiry with the rights of data owners and subjects. In this case, the researchers justified their actions by saying that the data were “public,” but that reasoning overlooks the context of publication: users shared their profiles for dating, not for scientific analysis.
+In addition to lacking user consent, the researchers also did not obtain permission from OkCupid itself. Initially, this was not against the terms of service created by OKCupid; however, the company later changed these terms. By ignoring these rules, the researchers bypassed the established permission structure for data use. In responsible research, permission structures help balance open scientific inquiry with the rights of data owners and subjects. In this case, the researchers justified their actions by saying that the data were “public,” but that reasoning overlooks the context of publication: users shared their profiles for dating, not for scientific analysis.
 
 #### Anonymity and Identifiability
 

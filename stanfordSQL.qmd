@@ -54,12 +54,19 @@ SHOW TABLES;
 
 ### Question 1:
 
-To investigate whether drivers stopped later at night tend to be younger, I analyzed statewide traffic stop data (from North Carolina on 4/01/2020) by comparing the hour of each stop to the average age of the driver involved. If younger drivers are disproportionately represented in late-night driving, we would expect to see a decline in average age during the later hours of the day.
+To investigate whether drivers stopped later at night tend to be younger, I analyzed statewide traffic stop data (from North Carolina through 4/01/2020) by comparing the hour of each stop to the average age of the driver involved. If younger drivers are disproportionately represented in late-night driving, we would expect to see a decline in average age during the later hours of the day.
+
+```{sql}
+#| connection: con_traffic
+DESCRIBE nc_statewide_2020_04_01;
+```
 
 ```{sql}
 #| connection: con_traffic
 #| output.var: "age_of_stops"
 #| cache: true
+
+
 SELECT 
     HOUR(time) AS stop_hour,
     COUNT(*) AS n_stops,
@@ -79,6 +86,7 @@ age_of_stops
 ```
 
 ```{r}
+#| fig-alt: "Line plot of average driver age by hour of traffic stops in North Carolina. Ages decrease at night, with late-night drivers around 30–32 years old, and daytime drivers around 34–37 years old."
 library(tidyverse)
 
 age_of_stops |>
@@ -88,7 +96,7 @@ age_of_stops |>
   labs(
     x = "Hour Traffic Stop Occurred",
     y = "Average Age of Subject",
-    title = "Average Age of Drivers by Hour of Traffic Stops"
+    title = "Average Age of Drivers by Hour of Traffic Stops in North Carolina"
   ) +
   theme_minimal()
 ```
@@ -124,13 +132,14 @@ race_and_arrests
 ```
 
 ```{r}
+#| fig-alt: "Horizontal bar plot of arrest rates by race in Raleigh traffic stops. Hispanic drivers have the highest rate at 4.92%, White drivers the lowest at 2.13%."
 library(forcats)
 
 race_and_arrests |>
 ggplot( aes(x = fct_reorder(race, pct_arrest), y = pct_arrest)) +
   geom_col(fill = "steelblue") +
   labs(
-    title = "Arrest Rate by Race in Raleigh Traffic Stops",
+    title = "Arrest Rate by Race in Raleigh, NC Traffic Stops",
     x = "Race",
     y = "Percent of Stops Ending in Arrest"
   ) +
@@ -154,13 +163,13 @@ SELECT
     subject_sex AS sex,
     COUNT(*) AS n_citations,
     (SELECT COUNT(*) 
-     FROM nc_raleigh_2020_04_01 
+     FROM nc_fayetteville_2020_04_01 
      WHERE citation_issued = 1) AS total_citations,
     ROUND(100.0 * COUNT(*) / 
           (SELECT COUNT(*) 
-           FROM nc_raleigh_2020_04_01 
+           FROM nc_fayetteville_2020_04_01 
            WHERE citation_issued = 1), 2) AS pct_of_total_citations
-FROM nc_raleigh_2020_04_01
+FROM nc_fayetteville_2020_04_01
 WHERE citation_issued = 1
   AND subject_sex IS NOT NULL
 GROUP BY subject_sex
@@ -175,21 +184,25 @@ sex_and_citations
 ```
 
 ```{r}
+#| fig-alt: "Vertical bar plot showing the share of traffic citations by sex in Fayetteville. Male drivers received 60.3% of citations, female drivers 39.7%."
 sex_and_citations |>
 ggplot(aes(x = sex, y = pct_of_total_citations, fill = sex)) +
   geom_col() +
   labs(
-    title = "Percentage of Citations by Sex",
+    title = "Percentage of Citations by Sex in Fayetteville, NC",
     x = "Sex",
     y = "Percent of Total Citations"
   ) +
   theme_minimal() +
   scale_fill_manual(values = c("female" = "pink", "male" = "steelblue"))
+
+
+DBI::dbDisconnect(con_traffic)
 ```
 
 **Figure 3.** Percentage of all citations attributed to male and female drivers. Each bar shows the proportion of total citations issued to each sex.
 
-Based on the data, male drivers receive a substantially larger share of citations, accounting for 62.62% of all citations issued, while female drivers receive only 37.48%. This indicates that men are cited noticeably more frequently than women.
+Based on the data, male drivers receive a substantially larger share of citations, accounting for 60.3% of all citations issued, while female drivers receive only 39.7%. This indicates that men are cited noticeably more frequently than women.
 
 ### Conclusion
 
