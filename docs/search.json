@@ -1,77 +1,77 @@
 [
   {
-    "objectID": "Final Presentation/FinalPresentation.html#what-is-css",
-    "href": "Final Presentation/FinalPresentation.html#what-is-css",
+    "objectID": "pres.html#what-is-css",
+    "href": "pres.html#what-is-css",
     "title": "Using CSS",
     "section": "What is CSS?",
     "text": "What is CSS?\n\nCascading Style Sheets (CSS)\nLanguage that allows us to style HTML elements"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#why-did-i-want-to-use-it-for-my-website",
-    "href": "Final Presentation/FinalPresentation.html#why-did-i-want-to-use-it-for-my-website",
+    "objectID": "pres.html#why-did-i-want-to-use-it-for-my-website",
+    "href": "pres.html#why-did-i-want-to-use-it-for-my-website",
     "title": "Using CSS",
     "section": "Why did I want to use it for my website?",
     "text": "Why did I want to use it for my website?\n\nI wanted to have more control over things like spacing and fontsize for individual elements"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#before",
-    "href": "Final Presentation/FinalPresentation.html#before",
+    "objectID": "pres.html#before",
+    "href": "pres.html#before",
     "title": "Using CSS",
     "section": "Before",
     "text": "Before"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#i-set-out-to",
-    "href": "Final Presentation/FinalPresentation.html#i-set-out-to",
+    "objectID": "pres.html#i-set-out-to",
+    "href": "pres.html#i-set-out-to",
     "title": "Using CSS",
     "section": "I set out to:",
     "text": "I set out to:\n- Customize the font size for each element\n- Change the size and spacing of the navigation bar\n- Fix the spacing on the front page"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#how-did-i-use-it",
-    "href": "Final Presentation/FinalPresentation.html#how-did-i-use-it",
+    "objectID": "pres.html#how-did-i-use-it",
+    "href": "pres.html#how-did-i-use-it",
     "title": "Using CSS",
     "section": "How did I use it?",
     "text": "How did I use it?\nIn the YAML of my website I added this line:\nformat:\n  html:\n    css: styles.css\nAnd created a file called styles.css in the same project that my website is hosted."
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#customizing-font-size",
-    "href": "Final Presentation/FinalPresentation.html#customizing-font-size",
+    "objectID": "pres.html#customizing-font-size",
+    "href": "pres.html#customizing-font-size",
     "title": "Using CSS",
     "section": "Customizing font size",
     "text": "Customizing font size\nbody {\n    font-size: 20px; \n}\nNow everything within the HTML &lt;body&gt; element is 20px."
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#changing-the-size-of-the-navigation-bar",
-    "href": "Final Presentation/FinalPresentation.html#changing-the-size-of-the-navigation-bar",
+    "objectID": "pres.html#changing-the-size-of-the-navigation-bar",
+    "href": "pres.html#changing-the-size-of-the-navigation-bar",
     "title": "Using CSS",
     "section": "Changing the size of the navigation bar",
     "text": "Changing the size of the navigation bar\n/* Make the navbar taller */\n.navbar, .site-navbar {\n  height: 80px;               \n  align-items: center;        \n}\n\n/* Adjust top-level links to fit taller navbar */\n.navbar .nav-link {\n  padding-top: 0.8rem;        /* add padding */\n  padding-bottom: 0.8rem;\n}\n\n/* Adjust dropdown items to make them taller too */\n.navbar .dropdown-menu .dropdown-item {\n  padding-top: 0.7rem;\n  padding-bottom: 0.7rem;\n}"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#changing-the-font-size-of-the-navigation-bar",
-    "href": "Final Presentation/FinalPresentation.html#changing-the-font-size-of-the-navigation-bar",
+    "objectID": "pres.html#changing-the-font-size-of-the-navigation-bar",
+    "href": "pres.html#changing-the-font-size-of-the-navigation-bar",
     "title": "Using CSS",
     "section": "Changing the font size of the navigation bar",
     "text": "Changing the font size of the navigation bar\n/* Top-level navbar items */\n.navbar .nav-link {\n  font-size: 1.4\\rem;\n}\n\n/* Dropdown menu items */\n.navbar .dropdown-menu .dropdown-item {\n  font-size: 1.15rem;\n}"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#sizing-the-home-screen",
-    "href": "Final Presentation/FinalPresentation.html#sizing-the-home-screen",
+    "objectID": "pres.html#sizing-the-home-screen",
+    "href": "pres.html#sizing-the-home-screen",
     "title": "Using CSS",
     "section": "Sizing the home screen",
     "text": "Sizing the home screen\n/* Title at top of page */\n.quarto-title h1.title {\n  font-size: 2.6rem;  \n  font-weight: 700;\n}\n\n/* About section text */\n.about-contents {\n  font-size: 1.15rem;  \n}\n\n/* section title (Education, About Me) */\n.about-contents h2 {\n  font-size: 1.6rem;\n  font-weight: 600;\n}\nNote: The unit “rem” assigns the size relative to the base font-size defined in the &lt;html&gt; element"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#after",
-    "href": "Final Presentation/FinalPresentation.html#after",
+    "objectID": "pres.html#after",
+    "href": "pres.html#after",
     "title": "Using CSS",
     "section": "After",
     "text": "After"
   },
   {
-    "objectID": "Final Presentation/FinalPresentation.html#section",
-    "href": "Final Presentation/FinalPresentation.html#section",
+    "objectID": "pres.html#section",
+    "href": "pres.html#section",
     "title": "Using CSS",
     "section": "",
     "text": "Thank you!"
@@ -137,7 +137,7 @@
     "href": "generativeText.html",
     "title": "Generative Text Using Python",
     "section": "",
-    "text": "This script uses Python’s choice function from the random module to generate a Markov-style text sequence based on the words in the Gettysburg Address. It first cleans and splits the text into individual words, then builds a dictionary mapping each word to all words that follow it in the original speech. Using this dictionary, the program randomly walks from word to word—always selecting a next word that actually followed the current one in the input text—to create a new, semi-coherent, 100-word generated speech that mimics the style of the original passage.\nInput: “Fourscore and seven years ago our fathers brought forth, on this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived, and so dedicated, can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of that field, as a final resting-place for those who here gave their lives, that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us that from these honored dead we take increased devotion to that cause for which they here gave the last full measure of devotion that we here highly resolve that these dead shall not have died in vain that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.”\n\n\nClick to show code\nfrom random import choice\nfrom IPython.display import display, HTML\nimport string\n\ntext = (\n    \"Fourscore and seven years ago our fathers brought forth, on this continent, \"\n    \"a new nation, conceived in liberty, and dedicated to the proposition that all men \"\n    \"are created equal. Now we are engaged in a great civil war, testing whether that \"\n    \"nation, or any nation so conceived, and so dedicated, can long endure. We are met \"\n    \"on a great battlefield of that war. We have come to dedicate a portion of that field, \"\n    \"as a final resting-place for those who here gave their lives, that that nation might live. \"\n    \"It is altogether fitting and proper that we should do this. But, in a larger sense, \"\n    \"we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, \"\n    \"living and dead, who struggled here, have consecrated it far above our poor power to add \"\n    \"or detract. The world will little note, nor long remember what we say here, but it can \"\n    \"never forget what they did here. It is for us the living, rather, to be dedicated here \"\n    \"to the unfinished work which they who fought here have thus far so nobly advanced. It is \"\n    \"rather for us to be here dedicated to the great task remaining before us that from these \"\n    \"honored dead we take increased devotion to that cause for which they here gave the last \"\n    \"full measure of devotion that we here highly resolve that these dead shall not have died \"\n    \"in vain that this nation, under God, shall have a new birth of freedom, and that government \"\n    \"of the people, by the people, for the people, shall not perish from the earth.\"\n)\n\n# Strip punctuation and split into words\nwords = [w.strip(string.punctuation) for w in text.split()]\n\n# Function to create next-word dictionary\ndef make_next_word_dict(words):\n    nextwords = {}\n    for i in range(len(words) - 1):\n        word = words[i]\n        next_word = words[i + 1]\n        if word not in nextwords:\n            nextwords[word] = []\n        nextwords[word].append(next_word)\n    return nextwords\n\n# Create dictionary\nnextwords = make_next_word_dict(words)\n\n# Start generating text\nspeech = choice(words)\ncurrent_word = speech\n\nfor i in range(100):\n    next_word = choice(nextwords.get(current_word, words))\n    speech += ' ' + next_word\n    current_word = next_word\n\n# Display output as HTML paragraph\nparagraph = f\"&lt;p&gt;Output:&lt;br&gt;{speech}&lt;/p&gt;\"\ndisplay(HTML(paragraph))\n\n\nOutput:note nor long endure We have thus far so dedicated to be here It is for us to be here gave their lives that government of the earth will little note nor long remember what we here It is altogether fitting and dedicated here It is rather for which they who struggled here highly resolve that that field as a final resting-place for those who fought here dedicated to be dedicated to be here highly resolve that nation might live It is for us to the earth in liberty and that this nation or detract The world will little note nor"
+    "text": "This script uses Python’s choice function from the random module to generate a Markov-style text sequence based on the words in the Gettysburg Address. It first cleans and splits the text into individual words, then builds a dictionary mapping each word to all words that follow it in the original speech. Using this dictionary, the program randomly walks from word to word—always selecting a next word that actually followed the current one in the input text—to create a new, semi-coherent, 100-word generated speech that mimics the style of the original passage.\nInput: “Fourscore and seven years ago our fathers brought forth, on this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived, and so dedicated, can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of that field, as a final resting-place for those who here gave their lives, that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, living and dead, who struggled here, have consecrated it far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us that from these honored dead we take increased devotion to that cause for which they here gave the last full measure of devotion that we here highly resolve that these dead shall not have died in vain that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.”\n\n\nClick to show code\nfrom random import choice\nfrom IPython.display import display, HTML\nimport string\n\ntext = (\n    \"Fourscore and seven years ago our fathers brought forth, on this continent, \"\n    \"a new nation, conceived in liberty, and dedicated to the proposition that all men \"\n    \"are created equal. Now we are engaged in a great civil war, testing whether that \"\n    \"nation, or any nation so conceived, and so dedicated, can long endure. We are met \"\n    \"on a great battlefield of that war. We have come to dedicate a portion of that field, \"\n    \"as a final resting-place for those who here gave their lives, that that nation might live. \"\n    \"It is altogether fitting and proper that we should do this. But, in a larger sense, \"\n    \"we cannot dedicate, we cannot consecrate we cannot hallow this ground. The brave men, \"\n    \"living and dead, who struggled here, have consecrated it far above our poor power to add \"\n    \"or detract. The world will little note, nor long remember what we say here, but it can \"\n    \"never forget what they did here. It is for us the living, rather, to be dedicated here \"\n    \"to the unfinished work which they who fought here have thus far so nobly advanced. It is \"\n    \"rather for us to be here dedicated to the great task remaining before us that from these \"\n    \"honored dead we take increased devotion to that cause for which they here gave the last \"\n    \"full measure of devotion that we here highly resolve that these dead shall not have died \"\n    \"in vain that this nation, under God, shall have a new birth of freedom, and that government \"\n    \"of the people, by the people, for the people, shall not perish from the earth.\"\n)\n\n# Strip punctuation and split into words\nwords = [w.strip(string.punctuation) for w in text.split()]\n\n# Function to create next-word dictionary\ndef make_next_word_dict(words):\n    nextwords = {}\n    for i in range(len(words) - 1):\n        word = words[i]\n        next_word = words[i + 1]\n        if word not in nextwords:\n            nextwords[word] = []\n        nextwords[word].append(next_word)\n    return nextwords\n\n# Create dictionary\nnextwords = make_next_word_dict(words)\n\n# Start generating text\nspeech = choice(words)\ncurrent_word = speech\n\nfor i in range(100):\n    next_word = choice(nextwords.get(current_word, words))\n    speech += ' ' + next_word\n    current_word = next_word\n\n# Display output as HTML paragraph\nparagraph = f\"&lt;p&gt;Output:&lt;br&gt;{speech}&lt;/p&gt;\"\ndisplay(HTML(paragraph))\n\n\nOutput:are created equal Now we take increased devotion that we cannot dedicate a great battlefield of that government of devotion that we are met on a new nation or detract The brave men are created equal Now we cannot consecrate we should do this ground The world will little note nor long endure We are created equal Now we here It is for us the great civil war testing whether that war testing whether that nation might live It is altogether fitting and proper that we cannot hallow this nation conceived in liberty and proper that this But in liberty and"
   },
   {
     "objectID": "ethics.html",
@@ -163,7 +163,7 @@
   {
     "objectID": "bakerLab.html",
     "href": "bakerLab.html",
-    "title": "Baker Lab at Oregon Health and Science University (OHSU)",
+    "title": "Baker Lab at Oregon Health & Science University (OHSU)",
     "section": "",
     "text": "For the Summer of 2025, I was accepted into Oregon Health and Science University’s NIH-funded Dental & Oral Research Summer (DORS) Scholar program. I was hosted by Dr. Jonathon Baker, where I contributed to his lab’s ongoing research on Streptococcus mutans. S. mutans, a primary contributor to tooth decay, adapts to environmental stress by altering its cell membrane composition. The Baker Lab investigates how S. mutans regulates this process, particularly the increase in unsaturated fatty acids, which enhances virulence and competitiveness within the oral microbiome.\n\n\n\n\n\nThe Baker Lab\n\n\n\n\n\n\nOHSU Intern Research Symposium\n\n\n\n\n\n\nWinning best poster at the research symposium\n\n\n\n\nDuring the internship, I was able to present a fifteen-minute oral presentation and a poster during the final research symposium. I was also given the opportunity to present my research at the International Association for Dental Research (IADR) conference in March 2026 (stay tuned).\nThe abstract I submitted to IADR. The poster I presented. My oral presentation."
   },

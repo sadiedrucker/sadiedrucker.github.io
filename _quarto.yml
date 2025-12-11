@@ -40,7 +40,7 @@ website:
           - text: Stanford Open Policing Project
             href: stanfordSQL.qmd
           - text: Final Presentation for DS002
-            href: Final Presentation/FinalPresentation.qmd
+            href: pres.qmd
 format:
   html:
     theme: journal

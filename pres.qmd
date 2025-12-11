@@ -1,0 +1,115 @@
+---
+title: "Using CSS"
+author: "Sadie Drucker"
+format: revealjs
+---
+
+## What is CSS?
+
+-   Cascading Style Sheets (CSS)
+-   Language that allows us to style HTML elements
+
+## Why did I want to use it for my website?
+
+-   I wanted to have more control over things like spacing and fontsize for individual elements
+
+## Before
+
+<img src="websiteOG.png" height="500" width="900"/>
+
+## I set out to:
+
+\- Customize the font size for each element
+
+\- Change the size and spacing of the navigation bar
+
+\- Fix the spacing on the front page
+
+## How did I use it?
+
+In the YAML of my website I added this line:
+
+``` yaml
+format:
+  html:
+    css: styles.css
+```
+
+And created a file called styles.css in the same project that my website is hosted.
+
+## Customizing font size
+
+``` css
+body {
+    font-size: 20px; 
+}
+```
+
+Now everything within the HTML `<body>` element is 20px.
+
+## Changing the size of the navigation bar
+
+``` css
+/* Make the navbar taller */
+.navbar, .site-navbar {
+  height: 80px;               
+  align-items: center;        
+}
+
+/* Adjust top-level links to fit taller navbar */
+.navbar .nav-link {
+  padding-top: 0.8rem;        /* add padding */
+  padding-bottom: 0.8rem;
+}
+
+/* Adjust dropdown items to make them taller too */
+.navbar .dropdown-menu .dropdown-item {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+```
+
+## Changing the font size of the navigation bar
+
+``` css
+/* Top-level navbar items */
+.navbar .nav-link {
+  font-size: 1.4\rem;
+}
+
+/* Dropdown menu items */
+.navbar .dropdown-menu .dropdown-item {
+  font-size: 1.15rem;
+}
+```
+
+## Sizing the home screen
+
+``` css
+/* Title at top of page */
+.quarto-title h1.title {
+  font-size: 2.6rem;  
+  font-weight: 700;
+}
+
+/* About section text */
+.about-contents {
+  font-size: 1.15rem;  
+}
+
+/* section title (Education, About Me) */
+.about-contents h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+```
+
+Note: The unit "rem" assigns the size relative to the base font-size defined in the `<html>` element
+
+## After
+
+<img src="websiteChanges.png" height="500" width="900"/>
+
+## 
+
+Thank you!
